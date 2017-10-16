@@ -1,0 +1,63 @@
+﻿@model IEnumerable<QLsach.Models.SACH>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TENSACH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TACGIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THELOAI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NXB.TENNXB)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENSACH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TACGIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THELOAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NXB.TENNXB)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MASACH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MASACH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MASACH })
+        </td>
+    </tr>
+}
+
+</table>

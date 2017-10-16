@@ -1,0 +1,66 @@
+﻿@model QLsach.Models.SACH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SACH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENSACH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSACH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TACGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TACGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THELOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THELOAI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NXB.TENNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NXB.TENNXB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MASACH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
