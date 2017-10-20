@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CONGNO">
           <Key>
             <PropertyRef Name="MADL" />
@@ -245,6 +245,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="tktonkho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ngay" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="SachModelStoreContainer">
           <EntitySet Name="CONGNO" EntityType="Self.CONGNO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTPN" EntityType="Self.CTPN" Schema="dbo" store:Type="Tables" />
@@ -302,8 +305,7 @@
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -625,7 +627,18 @@
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
+          <FunctionImport Name="tktonkho" ReturnType="Collection(SachModel.tktonkho_Result)">
+          <Parameter Name="ngay" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="tktonkho_Result">
+          <Property Type="String" Name="TENSACH" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="SL" Nullable="false" />
+          <Property Type="Int32" Name="GIA" Nullable="false" />
+          <Property Type="String" Name="TACGIA" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="THELOAI" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="MANXB" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -747,6 +760,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="tktonkho" FunctionName="SachModel.Store.tktonkho">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SachModel.tktonkho_Result">
+                <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
+                <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
+                <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

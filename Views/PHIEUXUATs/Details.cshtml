@@ -1,0 +1,42 @@
+﻿@model QLsach.Models.PHIEUXUAT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PHIEUXUAT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TINHTRANG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINHTRANG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAILY.TENDL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAPX }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

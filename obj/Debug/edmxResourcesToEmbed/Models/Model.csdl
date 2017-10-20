@@ -318,5 +318,16 @@
       <End Role="SACH" EntitySet="SACHes" />
       <End Role="TONKHO" EntitySet="TONKHOes" />
     </AssociationSet>
+    <FunctionImport Name="tktonkho" ReturnType="Collection(SachModel.tktonkho_Result)">
+      <Parameter Name="ngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="tktonkho_Result">
+    <Property Type="String" Name="TENSACH" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="SL" Nullable="false" />
+    <Property Type="Int32" Name="GIA" Nullable="false" />
+    <Property Type="String" Name="TACGIA" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="THELOAI" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="MANXB" Nullable="false" />
+  </ComplexType>
 </Schema>

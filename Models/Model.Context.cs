@@ -12,6 +12,8 @@ namespace QLsach.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Entities : DbContext
     {
@@ -36,5 +38,14 @@ namespace QLsach.Models
         public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TONKHO> TONKHOes { get; set; }
+    
+        public virtual ObjectResult<tktonkho_Result> tktonkho(Nullable<System.DateTime> ngay)
+        {
+            var ngayParameter = ngay.HasValue ?
+                new ObjectParameter("ngay", ngay) :
+                new ObjectParameter("ngay", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tktonkho_Result>("tktonkho", ngayParameter);
+        }
     }
 }

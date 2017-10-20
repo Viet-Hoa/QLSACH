@@ -240,6 +240,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="tktonkho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ngay" Type="date" Mode="In" />
+  </Function>
   <EntityContainer Name="SachModelStoreContainer">
     <EntitySet Name="CONGNO" EntityType="Self.CONGNO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CTPN" EntityType="Self.CTPN" Schema="dbo" store:Type="Tables" />

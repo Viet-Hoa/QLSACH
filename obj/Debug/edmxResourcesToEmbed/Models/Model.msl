@@ -116,5 +116,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="tktonkho" FunctionName="SachModel.Store.tktonkho">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SachModel.tktonkho_Result">
+          <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
+          <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

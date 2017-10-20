@@ -161,8 +161,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CTPNsController.cs" />
+    <Compile Include="Controllers\CTPXesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PHIEUNHAPsController.cs" />
+    <Compile Include="Controllers\PHIEUXUATsController.cs" />
     <Compile Include="Controllers\SACHesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +217,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tktonkho_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TONKHO.cs">
@@ -298,6 +305,26 @@
     <Content Include="Views\SACHes\Details.cshtml" />
     <Content Include="Views\SACHes\Edit.cshtml" />
     <Content Include="Views\SACHes\Index.cshtml" />
+    <Content Include="Views\PHIEUNHAPs\Create.cshtml" />
+    <Content Include="Views\PHIEUNHAPs\Delete.cshtml" />
+    <Content Include="Views\PHIEUNHAPs\Details.cshtml" />
+    <Content Include="Views\PHIEUNHAPs\Edit.cshtml" />
+    <Content Include="Views\PHIEUNHAPs\Index.cshtml" />
+    <Content Include="Views\CTPNs\Create.cshtml" />
+    <Content Include="Views\CTPNs\Delete.cshtml" />
+    <Content Include="Views\CTPNs\Details.cshtml" />
+    <Content Include="Views\CTPNs\Edit.cshtml" />
+    <Content Include="Views\CTPNs\Index.cshtml" />
+    <Content Include="Views\PHIEUXUATs\Create.cshtml" />
+    <Content Include="Views\PHIEUXUATs\Delete.cshtml" />
+    <Content Include="Views\PHIEUXUATs\Details.cshtml" />
+    <Content Include="Views\PHIEUXUATs\Edit.cshtml" />
+    <Content Include="Views\PHIEUXUATs\Index.cshtml" />
+    <Content Include="Views\CTPXes\Create.cshtml" />
+    <Content Include="Views\CTPXes\Delete.cshtml" />
+    <Content Include="Views\CTPXes\Details.cshtml" />
+    <Content Include="Views\CTPXes\Edit.cshtml" />
+    <Content Include="Views\CTPXes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
