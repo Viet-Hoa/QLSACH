@@ -12,12 +12,12 @@ namespace QLsach.Controllers
 {
     public class PHIEUXUATsController : Controller
     {
-        private Entities db = new Entities();
+        private SachEntities db = new SachEntities();
 
         // GET: PHIEUXUATs
         public ActionResult Index()
         {
-            var pHIEUXUATs = db.PHIEUXUATs.Include(p => p.DAILY);
+            var pHIEUXUATs = db.PHIEUXUAT.Include(p => p.DAILY);
             return View(pHIEUXUATs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUATs.Find(id);
+            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
             if (pHIEUXUAT == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace QLsach.Controllers
         // GET: PHIEUXUATs/Create
         public ActionResult Create()
         {
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL");
+            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace QLsach.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PHIEUXUATs.Add(pHIEUXUAT);
+                db.PHIEUXUAT.Add(pHIEUXUAT);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUXUAT.MADL);
+            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL", pHIEUXUAT.MADL);
             return View(pHIEUXUAT);
         }
 
@@ -68,12 +68,12 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUATs.Find(id);
+            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
             if (pHIEUXUAT == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUXUAT.MADL);
+            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL", pHIEUXUAT.MADL);
             return View(pHIEUXUAT);
         }
 
@@ -90,7 +90,7 @@ namespace QLsach.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUXUAT.MADL);
+            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL", pHIEUXUAT.MADL);
             return View(pHIEUXUAT);
         }
 
@@ -101,7 +101,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUATs.Find(id);
+            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
             if (pHIEUXUAT == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace QLsach.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUATs.Find(id);
-            db.PHIEUXUATs.Remove(pHIEUXUAT);
+            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
+            db.PHIEUXUAT.Remove(pHIEUXUAT);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

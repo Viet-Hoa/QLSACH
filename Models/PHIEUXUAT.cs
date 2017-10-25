@@ -17,8 +17,8 @@ namespace QLsach.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUXUAT()
         {
-            this.CONGNOes = new HashSet<CONGNO>();
-            this.CTPXes = new HashSet<CTPX>();
+            this.CONGNO = new HashSet<CONGNO>();
+            this.CTPX = new HashSet<CTPX>();
         }
     
         public int MAPX { get; set; }
@@ -27,9 +27,9 @@ namespace QLsach.Models
         public bool TINHTRANG { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONGNO> CONGNOes { get; set; }
+        public virtual ICollection<CONGNO> CONGNO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPX> CTPXes { get; set; }
+        public virtual ICollection<CTPX> CTPX { get; set; }
         public virtual DAILY DAILY { get; set; }
     }
 }

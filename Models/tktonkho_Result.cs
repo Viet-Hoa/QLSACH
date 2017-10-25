@@ -13,6 +13,7 @@ namespace QLsach.Models
     
     public partial class tktonkho_Result
     {
+        public int MASACH { get; set; }
         public string TENSACH { get; set; }
         public int SL { get; set; }
         public int GIA { get; set; }

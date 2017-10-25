@@ -17,10 +17,11 @@ namespace QLsach.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SACH()
         {
-            this.CTPNs = new HashSet<CTPN>();
-            this.CTPNs1 = new HashSet<CTPN>();
-            this.CTPXes = new HashSet<CTPX>();
-            this.TONKHOes = new HashSet<TONKHO>();
+            this.CTPN = new HashSet<CTPN>();
+            this.CTPN1 = new HashSet<CTPN>();
+            this.CTPX = new HashSet<CTPX>();
+            this.SACHBANDC = new HashSet<SACHBANDC>();
+            this.TONKHO = new HashSet<TONKHO>();
         }
     
         public int MASACH { get; set; }
@@ -32,13 +33,15 @@ namespace QLsach.Models
         public string THELOAI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPN> CTPNs { get; set; }
+        public virtual ICollection<CTPN> CTPN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPN> CTPNs1 { get; set; }
+        public virtual ICollection<CTPN> CTPN1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPX> CTPXes { get; set; }
+        public virtual ICollection<CTPX> CTPX { get; set; }
         public virtual NXB NXB { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TONKHO> TONKHOes { get; set; }
+        public virtual ICollection<SACHBANDC> SACHBANDC { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TONKHO> TONKHO { get; set; }
     }
 }

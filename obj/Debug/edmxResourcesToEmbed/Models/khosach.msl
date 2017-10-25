@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SachModelStoreContainer" CdmEntityContainer="SachEntities">
+    <EntitySetMapping Name="CONGNO">
+      <EntityTypeMapping TypeName="SachModel.CONGNO">
+        <MappingFragment StoreEntitySet="CONGNO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+          <ScalarProperty Name="MAPX" ColumnName="MAPX" />
+          <ScalarProperty Name="TIENNO" ColumnName="TIENNO" />
+          <ScalarProperty Name="TIENTRA" ColumnName="TIENTRA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTPN">
+      <EntityTypeMapping TypeName="SachModel.CTPN">
+        <MappingFragment StoreEntitySet="CTPN">
+          <ScalarProperty Name="MAPN" ColumnName="MAPN" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTPX">
+      <EntityTypeMapping TypeName="SachModel.CTPX">
+        <MappingFragment StoreEntitySet="CTPX">
+          <ScalarProperty Name="MAPX" ColumnName="MAPX" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="DGTB" ColumnName="DGTB" />
+          <ScalarProperty Name="DGB" ColumnName="DGB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DAILY">
+      <EntityTypeMapping TypeName="SachModel.DAILY">
+        <MappingFragment StoreEntitySet="DAILY">
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+          <ScalarProperty Name="TENDL" ColumnName="TENDL" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
+          <ScalarProperty Name="TONGNO" ColumnName="TONGNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MACDINH">
+      <EntityTypeMapping TypeName="SachModel.MACDINH">
+        <MappingFragment StoreEntitySet="MACDINH">
+          <ScalarProperty Name="TEN" ColumnName="TEN" />
+          <ScalarProperty Name="GIATRI" ColumnName="GIATRI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NXB">
+      <EntityTypeMapping TypeName="SachModel.NXB">
+        <MappingFragment StoreEntitySet="NXB">
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="TENNXB" ColumnName="TENNXB" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
+          <ScalarProperty Name="STK" ColumnName="STK" />
+          <ScalarProperty Name="TIENNO" ColumnName="TIENNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUNHAP">
+      <EntityTypeMapping TypeName="SachModel.PHIEUNHAP">
+        <MappingFragment StoreEntitySet="PHIEUNHAP">
+          <ScalarProperty Name="MAPN" ColumnName="MAPN" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="NGUOIGIAO" ColumnName="NGUOIGIAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUXUAT">
+      <EntityTypeMapping TypeName="SachModel.PHIEUXUAT">
+        <MappingFragment StoreEntitySet="PHIEUXUAT">
+          <ScalarProperty Name="MAPX" ColumnName="MAPX" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SACH">
+      <EntityTypeMapping TypeName="SachModel.SACH">
+        <MappingFragment StoreEntitySet="SACH">
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
+          <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SACHBANDC">
+      <EntityTypeMapping TypeName="SachModel.SACHBANDC">
+        <MappingFragment StoreEntitySet="SACHBANDC">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="BANDC" ColumnName="BANDC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TONKHO">
+      <EntityTypeMapping TypeName="SachModel.TONKHO">
+        <MappingFragment StoreEntitySet="TONKHO">
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="tktonkho" FunctionName="SachModel.Store.tktonkho">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SachModel.tktonkho_Result">
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
+          <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

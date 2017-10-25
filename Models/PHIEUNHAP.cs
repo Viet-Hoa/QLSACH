@@ -17,7 +17,7 @@ namespace QLsach.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUNHAP()
         {
-            this.CTPNs = new HashSet<CTPN>();
+            this.CTPN = new HashSet<CTPN>();
         }
     
         public int MAPN { get; set; }
@@ -26,7 +26,7 @@ namespace QLsach.Models
         public string NGUOIGIAO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPN> CTPNs { get; set; }
+        public virtual ICollection<CTPN> CTPN { get; set; }
         public virtual NXB NXB { get; set; }
     }
 }

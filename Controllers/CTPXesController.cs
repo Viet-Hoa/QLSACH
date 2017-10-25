@@ -12,12 +12,12 @@ namespace QLsach.Controllers
 {
     public class CTPXesController : Controller
     {
-        private Entities db = new Entities();
+        private SachEntities db = new SachEntities();
 
         // GET: CTPXes
         public ActionResult Index()
         {
-            var cTPXes = db.CTPXes.Include(c => c.PHIEUXUAT).Include(c => c.SACH);
+            var cTPXes = db.CTPX.Include(c => c.PHIEUXUAT).Include(c => c.SACH);
             return View(cTPXes.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTPX cTPX = db.CTPXes.Find(id);
+            CTPX cTPX = db.CTPX.Find(id);
             if (cTPX == null)
             {
                 return HttpNotFound();
@@ -39,8 +39,8 @@ namespace QLsach.Controllers
         // GET: CTPXes/Create
         public ActionResult Create()
         {
-            ViewBag.MAPX = new SelectList(db.PHIEUXUATs, "MAPX", "MAPX");
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
+            ViewBag.MAPX = new SelectList(db.PHIEUXUAT, "MAPX", "MAPX");
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace QLsach.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CTPXes.Add(cTPX);
+                db.CTPX.Add(cTPX);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MAPX = new SelectList(db.PHIEUXUATs, "MAPX", "MAPX", cTPX.MAPX);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPX.MASACH);
+            ViewBag.MAPX = new SelectList(db.PHIEUXUAT, "MAPX", "MAPX", cTPX.MAPX);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPX.MASACH);
             return View(cTPX);
         }
 
@@ -70,13 +70,13 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTPX cTPX = db.CTPXes.Find(id);
+            CTPX cTPX = db.CTPX.Find(id);
             if (cTPX == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MAPX = new SelectList(db.PHIEUXUATs, "MAPX", "MAPX", cTPX.MAPX);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPX.MASACH);
+            ViewBag.MAPX = new SelectList(db.PHIEUXUAT, "MAPX", "MAPX", cTPX.MAPX);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPX.MASACH);
             return View(cTPX);
         }
 
@@ -93,8 +93,8 @@ namespace QLsach.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MAPX = new SelectList(db.PHIEUXUATs, "MAPX", "MAPX", cTPX.MAPX);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPX.MASACH);
+            ViewBag.MAPX = new SelectList(db.PHIEUXUAT, "MAPX", "MAPX", cTPX.MAPX);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPX.MASACH);
             return View(cTPX);
         }
 
@@ -105,7 +105,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTPX cTPX = db.CTPXes.Find(id);
+            CTPX cTPX = db.CTPX.Find(id);
             if (cTPX == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace QLsach.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CTPX cTPX = db.CTPXes.Find(id);
-            db.CTPXes.Remove(cTPX);
+            CTPX cTPX = db.CTPX.Find(id);
+            db.CTPX.Remove(cTPX);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

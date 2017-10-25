@@ -12,12 +12,12 @@ namespace QLsach.Controllers
 {
     public class PHIEUNHAPsController : Controller
     {
-        private Entities db = new Entities();
+        private SachEntities db = new SachEntities();
 
         // GET: PHIEUNHAPs
         public ActionResult Index()
         {
-            var pHIEUNHAPs = db.PHIEUNHAPs.Include(p => p.NXB);
+            var pHIEUNHAPs = db.PHIEUNHAP.Include(p => p.NXB);
             return View(pHIEUNHAPs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAPs.Find(id);
+            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAP.Find(id);
             if (pHIEUNHAP == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace QLsach.Controllers
         // GET: PHIEUNHAPs/Create
         public ActionResult Create()
         {
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB");
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace QLsach.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PHIEUNHAPs.Add(pHIEUNHAP);
+                db.PHIEUNHAP.Add(pHIEUNHAP);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", pHIEUNHAP.MANXB);
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", pHIEUNHAP.MANXB);
             return View(pHIEUNHAP);
         }
 
@@ -68,12 +68,12 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAPs.Find(id);
+            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAP.Find(id);
             if (pHIEUNHAP == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", pHIEUNHAP.MANXB);
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", pHIEUNHAP.MANXB);
             return View(pHIEUNHAP);
         }
 
@@ -90,7 +90,7 @@ namespace QLsach.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", pHIEUNHAP.MANXB);
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", pHIEUNHAP.MANXB);
             return View(pHIEUNHAP);
         }
 
@@ -101,7 +101,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAPs.Find(id);
+            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAP.Find(id);
             if (pHIEUNHAP == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace QLsach.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAPs.Find(id);
-            db.PHIEUNHAPs.Remove(pHIEUNHAP);
+            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAP.Find(id);
+            db.PHIEUNHAP.Remove(pHIEUNHAP);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

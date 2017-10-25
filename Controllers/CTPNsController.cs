@@ -12,12 +12,12 @@ namespace QLsach.Controllers
 {
     public class CTPNsController : Controller
     {
-        private Entities db = new Entities();
+        private SachEntities db = new SachEntities();
 
         // GET: CTPNs
         public ActionResult Index()
         {
-            var cTPNs = db.CTPNs.Include(c => c.PHIEUNHAP).Include(c => c.SACH).Include(c => c.SACH1);
+            var cTPNs = db.CTPN.Include(c => c.PHIEUNHAP).Include(c => c.SACH).Include(c => c.SACH1);
             return View(cTPNs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTPN cTPN = db.CTPNs.Find(id);
+            CTPN cTPN = db.CTPN.Find(id);
             if (cTPN == null)
             {
                 return HttpNotFound();
@@ -39,9 +39,9 @@ namespace QLsach.Controllers
         // GET: CTPNs/Create
         public ActionResult Create()
         {
-            ViewBag.MAPN = new SelectList(db.PHIEUNHAPs, "MAPN", "NGUOIGIAO");
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
+            ViewBag.MAPN = new SelectList(db.PHIEUNHAP, "MAPN", "NGUOIGIAO");
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH");
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH");
             return View();
         }
 
@@ -54,14 +54,14 @@ namespace QLsach.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CTPNs.Add(cTPN);
+                db.CTPN.Add(cTPN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MAPN = new SelectList(db.PHIEUNHAPs, "MAPN", "NGUOIGIAO", cTPN.MAPN);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPN.MASACH);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPN.MASACH);
+            ViewBag.MAPN = new SelectList(db.PHIEUNHAP, "MAPN", "NGUOIGIAO", cTPN.MAPN);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPN.MASACH);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPN.MASACH);
             return View(cTPN);
         }
 
@@ -72,14 +72,14 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTPN cTPN = db.CTPNs.Find(id);
+            CTPN cTPN = db.CTPN.Find(id);
             if (cTPN == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MAPN = new SelectList(db.PHIEUNHAPs, "MAPN", "NGUOIGIAO", cTPN.MAPN);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPN.MASACH);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPN.MASACH);
+            ViewBag.MAPN = new SelectList(db.PHIEUNHAP, "MAPN", "NGUOIGIAO", cTPN.MAPN);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPN.MASACH);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPN.MASACH);
             return View(cTPN);
         }
 
@@ -96,9 +96,9 @@ namespace QLsach.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MAPN = new SelectList(db.PHIEUNHAPs, "MAPN", "NGUOIGIAO", cTPN.MAPN);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPN.MASACH);
-            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH", cTPN.MASACH);
+            ViewBag.MAPN = new SelectList(db.PHIEUNHAP, "MAPN", "NGUOIGIAO", cTPN.MAPN);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPN.MASACH);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH", cTPN.MASACH);
             return View(cTPN);
         }
 
@@ -109,7 +109,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTPN cTPN = db.CTPNs.Find(id);
+            CTPN cTPN = db.CTPN.Find(id);
             if (cTPN == null)
             {
                 return HttpNotFound();
@@ -122,8 +122,8 @@ namespace QLsach.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CTPN cTPN = db.CTPNs.Find(id);
-            db.CTPNs.Remove(cTPN);
+            CTPN cTPN = db.CTPN.Find(id);
+            db.CTPN.Remove(cTPN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

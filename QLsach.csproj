@@ -173,57 +173,57 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CONGNO.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTPN.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTPX.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAILY.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\khosach.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>khosach.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khosach.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>khosach.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khosach.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>khosach.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\MACDINH.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\NXB.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PHIEUNHAP.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PHIEUXUAT.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SACH.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+    <Compile Include="Models\SACHBANDC.cs">
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tktonkho_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TONKHO.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>khosach.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -236,22 +236,22 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model.edmx">
+    <EntityDeploy Include="Models\khosach.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>khosach.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model.Context.tt">
+    <Content Include="Models\khosach.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>khosach.edmx</DependentUpon>
+      <LastGenOutput>khosach.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <Content Include="Models\khosach.edmx.diagram">
+      <DependentUpon>khosach.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Model.tt">
+    <Content Include="Models\khosach.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>khosach.edmx</DependentUpon>
+      <LastGenOutput>khosach.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

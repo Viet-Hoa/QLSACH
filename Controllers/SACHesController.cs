@@ -12,12 +12,12 @@ namespace QLsach.Controllers
 {
     public class SACHesController : Controller
     {
-        private Entities db = new Entities();
+        private SachEntities db = new SachEntities();
 
         // GET: SACHes
         public ActionResult Index()
         {
-            var sACHes = db.SACHes.Include(s => s.NXB);
+            var sACHes = db.SACH.Include(s => s.NXB);
             return View(sACHes.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SACH sACH = db.SACHes.Find(id);
+            SACH sACH = db.SACH.Find(id);
             if (sACH == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace QLsach.Controllers
         // GET: SACHes/Create
         public ActionResult Create()
         {
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB");
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace QLsach.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SACHes.Add(sACH);
+                db.SACH.Add(sACH);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", sACH.MANXB);
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", sACH.MANXB);
             return View(sACH);
         }
 
@@ -68,12 +68,12 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SACH sACH = db.SACHes.Find(id);
+            SACH sACH = db.SACH.Find(id);
             if (sACH == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", sACH.MANXB);
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", sACH.MANXB);
             return View(sACH);
         }
 
@@ -90,7 +90,7 @@ namespace QLsach.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", sACH.MANXB);
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", sACH.MANXB);
             return View(sACH);
         }
 
@@ -101,7 +101,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SACH sACH = db.SACHes.Find(id);
+            SACH sACH = db.SACH.Find(id);
             if (sACH == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace QLsach.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SACH sACH = db.SACHes.Find(id);
-            db.SACHes.Remove(sACH);
+            SACH sACH = db.SACH.Find(id);
+            db.SACH.Remove(sACH);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
