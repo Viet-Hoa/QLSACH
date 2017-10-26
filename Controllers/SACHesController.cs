@@ -17,8 +17,8 @@ namespace QLsach.Controllers
         // GET: SACHes
         public ActionResult Index()
         {
-            var sACHes = db.SACH.Include(s => s.NXB);
-            return View(sACHes.ToList());
+            var sACH = db.SACH.Include(s => s.NXB);
+            return View(sACH.ToList());
         }
 
         // GET: SACHes/Details/5

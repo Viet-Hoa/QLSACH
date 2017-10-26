@@ -17,8 +17,8 @@ namespace QLsach.Controllers
         // GET: PHIEUXUATs
         public ActionResult Index()
         {
-            var pHIEUXUATs = db.PHIEUXUAT.Include(p => p.DAILY);
-            return View(pHIEUXUATs.ToList());
+            var pHIEUXUAT = db.PHIEUXUAT.Include(p => p.DAILY);
+            return View(pHIEUXUAT.ToList());
         }
 
         // GET: PHIEUXUATs/Details/5

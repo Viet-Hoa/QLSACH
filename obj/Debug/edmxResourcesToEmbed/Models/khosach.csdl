@@ -34,7 +34,6 @@
     <Property Name="MAPX" Type="Int32" Nullable="false" />
     <Property Name="MASACH" Type="Int32" Nullable="false" />
     <Property Name="SL" Type="Int32" Nullable="false" />
-    <Property Name="DGTB" Type="Int32" Nullable="false" />
     <Property Name="DGB" Type="Int32" Nullable="false" />
     <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__CTPX__MAPX__29572725" FromRole="CTPX" ToRole="PHIEUXUAT" />
     <NavigationProperty Name="SACH" Relationship="Self.FK__CTPX__MASACH__2A4B4B5E" FromRole="CTPX" ToRole="SACH" />

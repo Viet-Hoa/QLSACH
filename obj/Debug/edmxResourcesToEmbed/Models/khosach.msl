@@ -28,7 +28,6 @@
           <ScalarProperty Name="MAPX" ColumnName="MAPX" />
           <ScalarProperty Name="MASACH" ColumnName="MASACH" />
           <ScalarProperty Name="SL" ColumnName="SL" />
-          <ScalarProperty Name="DGTB" ColumnName="DGTB" />
           <ScalarProperty Name="DGB" ColumnName="DGB" />
         </MappingFragment>
       </EntityTypeMapping>

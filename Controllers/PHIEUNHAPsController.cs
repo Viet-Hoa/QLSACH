@@ -17,8 +17,8 @@ namespace QLsach.Controllers
         // GET: PHIEUNHAPs
         public ActionResult Index()
         {
-            var pHIEUNHAPs = db.PHIEUNHAP.Include(p => p.NXB);
-            return View(pHIEUNHAPs.ToList());
+            var pHIEUNHAP = db.PHIEUNHAP.Include(p => p.NXB);
+            return View(pHIEUNHAP.ToList());
         }
 
         // GET: PHIEUNHAPs/Details/5

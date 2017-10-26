@@ -28,7 +28,6 @@
     <Property Name="MAPX" Type="int" Nullable="false" />
     <Property Name="MASACH" Type="int" Nullable="false" />
     <Property Name="SL" Type="int" Nullable="false" />
-    <Property Name="DGTB" Type="int" Nullable="false" />
     <Property Name="DGB" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DAILY">
