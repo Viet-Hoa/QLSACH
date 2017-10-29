@@ -1,0 +1,29 @@
+﻿@model QLsach.Models.CTPN
+<div class="panel panel-default">
+            <table class="table">
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.MASACH, "MASACH", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MASACH", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MASACH, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.SL, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SL, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SL, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.DONGIA, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DONGIA, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DONGIA, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                </tr>
+            </table>                  
+   
+</div>

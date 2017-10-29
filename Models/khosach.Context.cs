@@ -39,13 +39,5 @@ namespace QLsach.Models
         public virtual DbSet<SACHBANDC> SACHBANDC { get; set; }
         public virtual DbSet<TONKHO> TONKHO { get; set; }
     
-        public virtual ObjectResult<tktonkho_Result> tktonkho(Nullable<System.DateTime> ngay)
-        {
-            var ngayParameter = ngay.HasValue ?
-                new ObjectParameter("ngay", ngay) :
-                new ObjectParameter("ngay", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tktonkho_Result>("tktonkho", ngayParameter);
-        }
     }
 }

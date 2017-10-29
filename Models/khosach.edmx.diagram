@@ -21,7 +21,6 @@
         <AssociationConnector Association="SachModel.FK__SACHBANDC__ID__628FA481" ManuallyRouted="false" />
         <AssociationConnector Association="SachModel.FK__CTPN__MAPN__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="SachModel.FK__CTPN__MASACH__276EDEB3" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__CTPN__MASACH__286302EC" ManuallyRouted="false" />
         <AssociationConnector Association="SachModel.FK__CTPX__MAPX__29572725" ManuallyRouted="false" />
         <AssociationConnector Association="SachModel.FK__CTPX__MASACH__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="SachModel.FK__PHIEUXUAT__MADL__2C3393D0" ManuallyRouted="false" />

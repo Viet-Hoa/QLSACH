@@ -28,37 +28,67 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUNHAP pHIEUNHAP = db.PHIEUNHAP.Find(id);
-            if (pHIEUNHAP == null)
+            var nhap = new NHAPModel();
+            nhap.pHIEUNHAP = db.PHIEUNHAP.Include(s => s.NXB).Where(s => s.MANXB == id).FirstOrDefault();
+            nhap.cTPNs = db.CTPN.Include(s => s.SACH).Where(s => s.MAPN == id).ToList();
+            if (nhap == null)
             {
                 return HttpNotFound();
             }
-            return View(pHIEUNHAP);
+            return View(nhap);
         }
 
         // GET: PHIEUNHAPs/Create
         public ActionResult Create()
         {
+            var md = new NHAPModel();
+            md.cTPNs.Add(new CTPN());
             ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB");
-            return View();
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH");
+            return View(md);
         }
-
+        
+        public ActionResult AddCTPN()
+        {
+            var md = new NHAPModel();
+            md.cTPNs.Add(new CTPN());
+            return View(md);
+        }
         // POST: PHIEUNHAPs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MAPN,NGAY,MANXB,NGUOIGIAO")] PHIEUNHAP pHIEUNHAP)
+        public ActionResult Create([Bind] NHAPModel nhap)
         {
             if (ModelState.IsValid)
             {
-                db.PHIEUNHAP.Add(pHIEUNHAP);
+                db.PHIEUNHAP.Add(nhap.pHIEUNHAP);
+                db.SaveChanges();
+                int ma = db.PHIEUNHAP.Select(x => x.MAPN).LastOrDefault();
+                int t = 0;
+                foreach(CTPN u in nhap.cTPNs)
+                {
+                    u.MAPN = ma;
+                    db.CTPN.Add(u);
+                    db.SaveChanges();
+                    t = t + u.SL * u.DONGIA;
+                    SACH a = db.SACH.Find(u.MASACH);
+                    a.SL = a.SL + u.SL;
+                    a.GIA = u.DONGIA;
+                    db.Entry(a).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                NXB n = db.NXB.Find(nhap.pHIEUNHAP.MANXB);
+                n.TIENNO = n.TIENNO + t;
+                db.Entry(n).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", pHIEUNHAP.MANXB);
-            return View(pHIEUNHAP);
+            ViewBag.MANXB = new SelectList(db.NXB, "MANXB", "TENNXB", nhap.pHIEUNHAP.MANXB);
+            ViewBag.MASACH = new SelectList(db.SACH, "MASACH", "TENSACH",nhap.cTPNs.FirstOrDefault().MASACH);
+            return View(nhap);
         }
 
         // GET: PHIEUNHAPs/Edit/5

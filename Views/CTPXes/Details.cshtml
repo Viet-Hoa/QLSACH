@@ -1,0 +1,50 @@
+﻿@model QLsach.Models.CTPX
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CTPX</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DGB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DGB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHIEUXUAT.MAPX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHIEUXUAT.MAPX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SACH.TENSACH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SACH.TENSACH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

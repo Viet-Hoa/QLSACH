@@ -9,5 +9,9 @@ namespace QLsach.Models
     {
         public PHIEUNHAP pHIEUNHAP { get; set; }
         public List<CTPN> cTPNs { get; set; }
+        public NHAPModel()
+        {
+            cTPNs = new List<CTPN>();
+        }
     }
 }

@@ -364,7 +364,6 @@
           <Property Name="DONGIA" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PHIEUNHAP" Relationship="Self.FK__CTPN__MAPN__267ABA7A" FromRole="CTPN" ToRole="PHIEUNHAP" />
           <NavigationProperty Name="SACH" Relationship="Self.FK__CTPN__MASACH__276EDEB3" FromRole="CTPN" ToRole="SACH" />
-          <NavigationProperty Name="SACH1" Relationship="Self.FK__CTPN__MASACH__286302EC" FromRole="CTPN" ToRole="SACH" />
         </EntityType>
         <EntityType Name="CTPX">
           <Key>
@@ -445,7 +444,6 @@
           <Property Name="TACGIA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="THELOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="CTPN" Relationship="Self.FK__CTPN__MASACH__276EDEB3" FromRole="SACH" ToRole="CTPN" />
-          <NavigationProperty Name="CTPN1" Relationship="Self.FK__CTPN__MASACH__286302EC" FromRole="SACH" ToRole="CTPN" />
           <NavigationProperty Name="CTPX" Relationship="Self.FK__CTPX__MASACH__2A4B4B5E" FromRole="SACH" ToRole="CTPX" />
           <NavigationProperty Name="NXB" Relationship="Self.FK__SACH__MANXB__2D27B809" FromRole="SACH" ToRole="NXB" />
           <NavigationProperty Name="SACHBANDC" Relationship="Self.FK__SACHBANDC__MASAC__6383C8BA" FromRole="SACH" ToRole="SACHBANDC" />
@@ -522,18 +520,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CTPN__MASACH__276EDEB3">
-          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
-          <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SACH">
-              <PropertyRef Name="MASACH" />
-            </Principal>
-            <Dependent Role="CTPN">
-              <PropertyRef Name="MASACH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CTPN__MASACH__286302EC">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -658,10 +644,6 @@
             <End Role="CTPN" EntitySet="CTPN" />
           </AssociationSet>
           <AssociationSet Name="FK__CTPN__MASACH__276EDEB3" Association="Self.FK__CTPN__MASACH__276EDEB3">
-            <End Role="SACH" EntitySet="SACH" />
-            <End Role="CTPN" EntitySet="CTPN" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CTPN__MASACH__286302EC" Association="Self.FK__CTPN__MASACH__286302EC">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CTPN" EntitySet="CTPN" />
           </AssociationSet>
