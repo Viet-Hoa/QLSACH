@@ -389,10 +389,9 @@
     <Content Include="Views\PHIEUTHUs\Delete.cshtml" />
     <Content Include="Views\PHIEUTHUs\Details.cshtml" />
     <Content Include="Views\PHIEUTHUs\Index.cshtml" />
+    <Content Include="Views\Thongke\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Thongke\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

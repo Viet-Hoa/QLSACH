@@ -28,4 +28,11 @@ $(function () { // will trigger when the document is ready
     $('.datepicker').datepicker({ dateFormat: 'dd-mm-yy' }); //Initialise any date pickers
 });
 
+$('#throw').keyup(function () {
+    $('#catch').val($('#throw').val());
+});
+jQuery(window).load(function () {
+    $('#catch').val($('#throw').val());
+});
+
 

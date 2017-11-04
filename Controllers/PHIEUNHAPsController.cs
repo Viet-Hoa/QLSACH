@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -51,36 +52,42 @@ namespace QLsach.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MAPN,NGAY,MANXB,NGUOIGIAO")] PHIEUNHAP phieunhap, 
-                                   [Bind(Include = "MAPN,MASACH,SL")] CTPN[] ctpn)
+        public ActionResult Create([Bind(Prefix="pn")] PHIEUNHAP phieunhap, 
+                                   [Bind(Prefix="ctpn")] CTPN[] ctpn)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.PHIEUNHAPs.Add(phieunhap);
-                db.SaveChanges();
-                int ma = db.PHIEUNHAPs.Select(x => x.MAPN).LastOrDefault();
-                int t = 0;
-                foreach(CTPN u in ctpn)
+                if (ModelState.IsValid)
                 {
-                    if (u != null)
+                    db.PHIEUNHAPs.Add(phieunhap);
+                    db.SaveChanges();
+                    int ma = db.PHIEUNHAPs.Select(x => x.MAPN).LastOrDefault();
+                    int t = 0;
+                    foreach (CTPN u in ctpn)
                     {
-                        u.MAPN = ma;
-                        db.CTPNs.Add(u);
-                        db.SaveChanges();
-                        SACH a = db.SACHes.Find(u.MASACH);
-                        a.SL = a.SL + u.SL;
-                        t = t + u.SL * a.DGM;
-                        db.Entry(a).State = EntityState.Modified;
-                        db.SaveChanges();
+                        if (u != null)
+                        {
+                            u.MAPN = ma;
+                            db.CTPNs.Add(u);
+                            db.SaveChanges();
+                            SACH a = db.SACHes.Find(u.MASACH);
+                            a.SL = a.SL + u.SL;
+                            t = t + u.SL * a.DGM;
+                            db.Entry(a).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
                     }
+                    NXB n = db.NXBs.Find(phieunhap.MANXB);
+                    n.TIENNO = n.TIENNO + t;
+                    db.Entry(n).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                NXB n = db.NXBs.Find(phieunhap.MANXB);
-                n.TIENNO = n.TIENNO + t;
-                db.Entry(n).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
             }
+            catch(DbEntityValidationException e)
+            {
 
+            }
             ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", phieunhap.MANXB);
             ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
             phieunhap.CTPNs= ctpn;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -61,19 +62,16 @@ namespace QLsach.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Include = "NGAY,MASACH,SL")] List<TONKHO> tk)
         {
-            if (tk == null || !tk.Any())
-                return View();
-            for (var i = tk.Count - 1; i >= 0; i--)
+            try
             {
-                if (tk[i] == null)
-                    tk.RemoveAt(i);
+                foreach (TONKHO u in tk)
+                {
+                    u.NGAY = DateTime.Now.Date;
+                    db.TONKHOes.Add(u);
+                    db.SaveChanges();
+                }
             }
-            foreach(TONKHO u in tk)
-            {
-                u.NGAY = DateTime.Now.Date;
-                db.TONKHOes.Add(u);
-                db.SaveChanges();
-            }
+            catch(DbEntityValidationException e){}
             ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
             return RedirectToAction("Index");
         }

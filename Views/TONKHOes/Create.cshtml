@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    int i = 0;
 }
 
 <h2>Create</h2>
@@ -24,16 +25,18 @@
                 <td>
                     @Html.LabelFor(modelitem => item.MASACH, "Sách", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownList("MASACH", null, htmlAttributes: new { @class = "form-control", @readonly = "true", @value = item.MASACH })
-                        @Html.ValidationMessageFor(modelitem => item.MASACH, "", new { @class = "text-danger" })
+                        @Html.DisplayFor(modelItem => item.SACH.TENSACH, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.Hidden("item[" + i + "].MASACH", item.MASACH)
                     </div>
                 </td>
                 <td>
                     @Html.LabelFor(modelitem => item.SL, "Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(modelitem => item.SL, new { htmlAttributes = new { @class = "form-control", @value = item.SL } })
-                        @Html.ValidationMessageFor(modelitem => item.SL, "", new { @class = "text-danger" })
-                    </div>
+                        @Html.EditorFor(modelitem => item.SL, new { htmlAttributes = new { @class = "form-control", @value = item.SL, @id="throw" } })
+                        @Html.ValidationMessageFor(modelitem => item.SL, "", new { @class = "text-danger" })     
+                        @Html.Hidden("item[" + i + "].SL", item.SL, new { htmlAttributes = new { @id="catch" } })                 
+                    </div>@{i++;
+}
                 </td>
             </tr>
         </table>

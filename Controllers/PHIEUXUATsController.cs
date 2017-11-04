@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -51,66 +52,73 @@ namespace QLsach.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MAPX,NGAY,MADL")] PHIEUXUAT phieuxuat,
-                                   [Bind(Include = "MAPN,MASACH,SL")] CTPX[] ctpx)
+        public ActionResult Create([Bind(Prefix="px")] PHIEUXUAT phieuxuat,
+                                   [Bind(Prefix="ctpx")] CTPX[] ctpx)
         {
             ViewBag.mess = null;
-            if (ModelState.IsValid)
+            try
             {
-                db.PHIEUXUATs.Add(phieuxuat);
-                db.SaveChanges();
-                int ma = db.PHIEUNHAPs.Select(x => x.MAPN).LastOrDefault();
-                int t = 0;
-                foreach(CTPX u in ctpx)
+                if (ModelState.IsValid)
                 {
-                    SACH a = db.SACHes.Find(u.MASACH);
-                    if(u.SL>a.SL)
+                    db.PHIEUXUATs.Add(phieuxuat);
+                    db.SaveChanges();
+                    int ma = db.PHIEUNHAPs.Select(x => x.MAPN).LastOrDefault();
+                    int t = 0;
+                    foreach (CTPX u in ctpx)
                     {
-                        ViewBag.mess = "Quá số lượng";
+                        SACH a = db.SACHes.Find(u.MASACH);
+                        if (u.SL > a.SL)
+                        {
+                            ViewBag.mess = "Quá số lượng";
+                            return View();
+                        }
+                        t = t + u.SL * a.DGB;
+                    }
+                    DAILY n = db.DAILies.Find(phieuxuat.MADL);
+                    n.TONGNO = n.TONGNO + t;
+                    var mdn = db.MACDINHs.FirstOrDefault();
+                    if (n.TONGNO > int.Parse(mdn.GIATRI))
+                    {
+                        ViewBag.mess = "Đại lý nợ quá " + mdn.GIATRI;
                         return View();
                     }
-                    t = t + u.SL * a.DGB;
-                }
-                DAILY n = db.DAILies.Find(phieuxuat.MADL);
-                n.TONGNO = n.TONGNO + t;
-                var mdn =db.MACDINHs.FirstOrDefault();
-                if(n.TONGNO>int.Parse(mdn.GIATRI))
-                {
-                    ViewBag.mess = "Đại lý nợ quá " + mdn.GIATRI;
-                    return View();
-                }
-                db.Entry(n).State = EntityState.Modified;
-                db.SaveChanges();
-                foreach (CTPX u in ctpx)
-                {
-                    if (u != null)
+                    db.Entry(n).State = EntityState.Modified;
+                    db.SaveChanges();
+                    foreach (CTPX u in ctpx)
                     {
-                        u.MAPX = ma;
-                        db.CTPXes.Add(u);
-                        db.SaveChanges();
-                        SACH a = db.SACHes.Find(u.MASACH);
-                        a.SL = a.SL - u.SL;
-                        db.Entry(a).State = EntityState.Modified;
-                        db.SaveChanges();
-                        SACHBANDC s = new SACHBANDC();
-                        s.MAPX = phieuxuat.MAPX;
-                        s.MADL = phieuxuat.MADL;
-                        s.SL = u.SL;
-                        s.BANDC = 0;
-                        db.SACHBANDCs.Add(s);
-                        db.SaveChanges();
+                        if (u != null)
+                        {
+                            u.MAPX = ma;
+                            db.CTPXes.Add(u);
+                            db.SaveChanges();
+                            SACH a = db.SACHes.Find(u.MASACH);
+                            a.SL = a.SL - u.SL;
+                            db.Entry(a).State = EntityState.Modified;
+                            db.SaveChanges();
+                            SACHBANDC s = new SACHBANDC();
+                            s.MAPX = phieuxuat.MAPX;
+                            s.MADL = phieuxuat.MADL;
+                            s.SL = u.SL;
+                            s.BANDC = 0;
+                            db.SACHBANDCs.Add(s);
+                            db.SaveChanges();
+                        }
                     }
+                    CONGNO c = new CONGNO();
+                    c.MAPX = phieuxuat.MAPX;
+                    c.MADL = phieuxuat.MADL;
+                    c.TIENNO = t;
+                    c.TIENTRA = 0;
+                    db.CONGNOes.Add(c);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                CONGNO c = new CONGNO();
-                c.MAPX = phieuxuat.MAPX;
-                c.MADL = phieuxuat.MADL;
-                c.TIENNO = t;
-                c.TIENTRA = 0;
-                db.CONGNOes.Add(c);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            
             }
+            catch (DbEntityValidationException e)
+            {
 
+            }
             ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", phieuxuat.MADL);
             ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
             phieuxuat.CTPXes = ctpx;
