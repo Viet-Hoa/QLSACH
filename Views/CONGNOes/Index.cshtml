@@ -1,0 +1,51 @@
+﻿@model IEnumerable<QLsach.Models.CONGNO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TIENNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIENTRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHIEUXUAT.MAPX)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIENNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIENTRA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DAILY.TENDL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHIEUXUAT.MAPX)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<QLsach.Models.TONKHO>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TONKHO</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                Ngày
+            </th>
+            <th>
+                Sách
+            </th>
+            <th>
+                Số lượng
+            </th>
+        </tr>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SACH.TENSACH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SL)
+        </td>
+    </tr>
+}
+</table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

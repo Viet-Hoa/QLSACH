@@ -17,28 +17,29 @@ namespace QLsach.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SACH()
         {
-            this.CTPN = new HashSet<CTPN>();
-            this.CTPX = new HashSet<CTPX>();
-            this.SACHBANDC = new HashSet<SACHBANDC>();
-            this.TONKHO = new HashSet<TONKHO>();
+            this.CTPNs = new HashSet<CTPN>();
+            this.CTPXes = new HashSet<CTPX>();
+            this.SACHBANDCs = new HashSet<SACHBANDC>();
+            this.TONKHOes = new HashSet<TONKHO>();
         }
     
         public int MASACH { get; set; }
         public string TENSACH { get; set; }
         public int MANXB { get; set; }
         public int SL { get; set; }
-        public int GIA { get; set; }
+        public int DGM { get; set; }
+        public int DGB { get; set; }
         public string TACGIA { get; set; }
         public string THELOAI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPN> CTPN { get; set; }
+        public virtual ICollection<CTPN> CTPNs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPX> CTPX { get; set; }
+        public virtual ICollection<CTPX> CTPXes { get; set; }
         public virtual NXB NXB { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SACHBANDC> SACHBANDC { get; set; }
+        public virtual ICollection<SACHBANDC> SACHBANDCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TONKHO> TONKHO { get; set; }
+        public virtual ICollection<TONKHO> TONKHOes { get; set; }
     }
 }

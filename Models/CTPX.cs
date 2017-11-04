@@ -17,7 +17,7 @@ namespace QLsach.Models
         public int MAPX { get; set; }
         public int MASACH { get; set; }
         public int SL { get; set; }
-        public int DGB { get; set; }
+        public string Index { get;set;}
     
         public virtual PHIEUXUAT PHIEUXUAT { get; set; }
         public virtual SACH SACH { get; set; }

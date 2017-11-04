@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="SachModelStoreContainer" CdmEntityContainer="SachEntities">
-    <EntitySetMapping Name="CONGNO">
+    <EntitySetMapping Name="CONGNOes">
       <EntityTypeMapping TypeName="SachModel.CONGNO">
         <MappingFragment StoreEntitySet="CONGNO">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MADL" ColumnName="MADL" />
           <ScalarProperty Name="MAPX" ColumnName="MAPX" />
           <ScalarProperty Name="TIENNO" ColumnName="TIENNO" />
@@ -12,27 +11,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CTPN">
+    <EntitySetMapping Name="CTPNs">
       <EntityTypeMapping TypeName="SachModel.CTPN">
         <MappingFragment StoreEntitySet="CTPN">
           <ScalarProperty Name="MAPN" ColumnName="MAPN" />
           <ScalarProperty Name="MASACH" ColumnName="MASACH" />
           <ScalarProperty Name="SL" ColumnName="SL" />
-          <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CTPX">
+    <EntitySetMapping Name="CTPXes">
       <EntityTypeMapping TypeName="SachModel.CTPX">
         <MappingFragment StoreEntitySet="CTPX">
           <ScalarProperty Name="MAPX" ColumnName="MAPX" />
           <ScalarProperty Name="MASACH" ColumnName="MASACH" />
           <ScalarProperty Name="SL" ColumnName="SL" />
-          <ScalarProperty Name="DGB" ColumnName="DGB" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DAILY">
+    <EntitySetMapping Name="DAILies">
       <EntityTypeMapping TypeName="SachModel.DAILY">
         <MappingFragment StoreEntitySet="DAILY">
           <ScalarProperty Name="MADL" ColumnName="MADL" />
@@ -43,7 +40,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MACDINH">
+    <EntitySetMapping Name="MACDINHs">
       <EntityTypeMapping TypeName="SachModel.MACDINH">
         <MappingFragment StoreEntitySet="MACDINH">
           <ScalarProperty Name="TEN" ColumnName="TEN" />
@@ -51,7 +48,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NXB">
+    <EntitySetMapping Name="NXBs">
       <EntityTypeMapping TypeName="SachModel.NXB">
         <MappingFragment StoreEntitySet="NXB">
           <ScalarProperty Name="MANXB" ColumnName="MANXB" />
@@ -63,7 +60,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHIEUNHAP">
+    <EntitySetMapping Name="PHIEUCHIs">
+      <EntityTypeMapping TypeName="SachModel.PHIEUCHI">
+        <MappingFragment StoreEntitySet="PHIEUCHI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="TIEN" ColumnName="TIEN" />
+          <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUNHAPs">
       <EntityTypeMapping TypeName="SachModel.PHIEUNHAP">
         <MappingFragment StoreEntitySet="PHIEUNHAP">
           <ScalarProperty Name="MAPN" ColumnName="MAPN" />
@@ -73,40 +81,53 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHIEUXUAT">
+    <EntitySetMapping Name="PHIEUTHUs">
+      <EntityTypeMapping TypeName="SachModel.PHIEUTHU">
+        <MappingFragment StoreEntitySet="PHIEUTHU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+          <ScalarProperty Name="TIEN" ColumnName="TIEN" />
+          <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUXUATs">
       <EntityTypeMapping TypeName="SachModel.PHIEUXUAT">
         <MappingFragment StoreEntitySet="PHIEUXUAT">
           <ScalarProperty Name="MAPX" ColumnName="MAPX" />
           <ScalarProperty Name="NGAY" ColumnName="NGAY" />
           <ScalarProperty Name="MADL" ColumnName="MADL" />
-          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SACH">
+    <EntitySetMapping Name="SACHes">
       <EntityTypeMapping TypeName="SachModel.SACH">
         <MappingFragment StoreEntitySet="SACH">
           <ScalarProperty Name="MASACH" ColumnName="MASACH" />
           <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
           <ScalarProperty Name="MANXB" ColumnName="MANXB" />
           <ScalarProperty Name="SL" ColumnName="SL" />
-          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="DGM" ColumnName="DGM" />
+          <ScalarProperty Name="DGB" ColumnName="DGB" />
           <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
           <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SACHBANDC">
+    <EntitySetMapping Name="SACHBANDCs">
       <EntityTypeMapping TypeName="SachModel.SACHBANDC">
         <MappingFragment StoreEntitySet="SACHBANDC">
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MAPX" ColumnName="MAPX" />
           <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
           <ScalarProperty Name="SL" ColumnName="SL" />
           <ScalarProperty Name="BANDC" ColumnName="BANDC" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TONKHO">
+    <EntitySetMapping Name="TONKHOes">
       <EntityTypeMapping TypeName="SachModel.TONKHO">
         <MappingFragment StoreEntitySet="TONKHO">
           <ScalarProperty Name="NGAY" ColumnName="NGAY" />
@@ -115,18 +136,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="tktonkho" FunctionName="SachModel.Store.tktonkho">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SachModel.tktonkho_Result">
-          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
-          <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
-          <ScalarProperty Name="SL" ColumnName="SL" />
-          <ScalarProperty Name="GIA" ColumnName="GIA" />
-          <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
-          <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
-          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

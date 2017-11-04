@@ -4,30 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="42fe3dbc497a40089fa6f8034e5f83c7" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="SachModel.CONGNO" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.CTPN" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.CTPX" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.DAILY" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
+      <Diagram DiagramId="1a95b0b6eb084b06aef50f89beb36df2" Name="Diagram1">
+        <EntityTypeShape EntityType="SachModel.CONGNO" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.CTPN" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.CTPX" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.DAILY" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SachModel.MACDINH" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.NXB" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.PHIEUNHAP" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.PHIEUXUAT" Width="1.5" PointX="3.75" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.SACH" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.SACHBANDC" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SachModel.TONKHO" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
-        <AssociationConnector Association="SachModel.FK__CONGNO__MADL__5DCAEF64" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__CONGNO__MAPX__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__SACHBANDC__ID__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__CTPN__MAPN__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__CTPN__MASACH__276EDEB3" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__CTPX__MAPX__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__CTPX__MASACH__2A4B4B5E" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__PHIEUXUAT__MADL__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__PHIEUNHAP__MANXB__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__SACH__MANXB__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__SACHBANDC__MASAC__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="SachModel.FK__TONKHO__MASACH__2E1BDC42" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SachModel.NXB" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.PHIEUCHI" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.PHIEUNHAP" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.PHIEUTHU" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.PHIEUXUAT" Width="1.5" PointX="6" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.SACH" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.SACHBANDC" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="SachModel.TONKHO" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="SachModel.FK__CONGNO__MADL__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__CONGNO__MAPX__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__CTPN__MAPN__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__CTPN__MASACH__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__CTPX__MAPX__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__CTPX__MASACH__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__PHIEUTHU__MADL__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__PHIEUXUAT__MADL__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__SACHBANDC__MADL__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__PHIEUCHI__MANXB__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__PHIEUNHAP__MANXB__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__SACH__MANXB__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__SACHBANDC__MAPX__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__SACHBANDC__MASAC__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="SachModel.FK__TONKHO__MASACH__38996AB5" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

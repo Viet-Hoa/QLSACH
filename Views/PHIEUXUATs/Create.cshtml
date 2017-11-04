@@ -1,48 +1,97 @@
-﻿@model QLsach.Models.PHIEUXUAT
+﻿@model QLsach.Models.createxuat
 
 @{
     ViewBag.Title = "Create";
+    int i = 0;
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>PHIEUXUAT</h4>
+        <h4>PHIEUNHAP</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.NGAY, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Ngày", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NGAY, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NGAY, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.px.NGAY, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.px.NGAY, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MADL, "MADL", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Đại lý", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MADL", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MADL, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.px.MADL, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TINHTRANG, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.TINHTRANG)
-                    @Html.ValidationMessageFor(model => model.TINHTRANG, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-inline">
+            <h4>Thêm chi tiết phiếu xuất</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="panel panel-default">
+                <table class="table" id="ct">
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ctpx.MASACH, "MASACH", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("MASACH", null, htmlAttributes: new { @class = "form-control", @id = "item"})
+                                @Html.ValidationMessageFor(model => model.ctpx.MASACH, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            @Html.LabelFor(model => model.ctpx.SL, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ctpx.SL, new { htmlAttributes = new { @class = "form-control" ,@id = "amount"} })
+                                @Html.ValidationMessageFor(model => model.ctpx.SL, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="button" id="btnAdd" class="btn btn-default" value="Add" />
+                            </div>
+                        </td>
+                </table>
             </div>
         </div>
-
+        <hr />
+        <table class="table" id="chitiet">
+            <tr>
+                <th>ID</th>
+                <th>ID Sách</th>
+                <th>Tên Sách</th>
+                <th>Số lượng nhập</th>
+                <th></th>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var ct in Model.px.CTPXes)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => ct.MAPX)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.MASACH)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.SACH.TENSACH)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.SL)</td>
+                        <td><button class="btn btn-danger btnDelete">Delete</button></td>
+                        @Html.Hidden("ct.Index", i)
+                        @Html.Hidden("ct[" + i + "].idsach", ct.MASACH)
+                        @Html.Hidden("ct[" + i + "].soluong", ct.SL)
+                    </tr>
+                    i = i + 1;
+                }
+            }
+        </table>
+        <hr />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div>
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
@@ -55,4 +104,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/mycustomjquery")
 }

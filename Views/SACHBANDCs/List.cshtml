@@ -1,0 +1,53 @@
+﻿@model IEnumerable<QLsach.Models.SACHBANDC>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHIEUXUAT.MAPX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SACH.TENSACH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BANDC)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.DAILY.TENDL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHIEUXUAT.MAPX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SACH.TENSACH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BANDC)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

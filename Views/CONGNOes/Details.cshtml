@@ -1,0 +1,50 @@
+﻿@model QLsach.Models.CONGNO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CONGNO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TIENNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIENNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIENTRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIENTRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAILY.TENDL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHIEUXUAT.MAPX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHIEUXUAT.MAPX)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

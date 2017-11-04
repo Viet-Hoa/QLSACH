@@ -17,8 +17,10 @@ namespace QLsach.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DAILY()
         {
-            this.CONGNO = new HashSet<CONGNO>();
-            this.PHIEUXUAT = new HashSet<PHIEUXUAT>();
+            this.CONGNOes = new HashSet<CONGNO>();
+            this.PHIEUTHUs = new HashSet<PHIEUTHU>();
+            this.PHIEUXUATs = new HashSet<PHIEUXUAT>();
+            this.SACHBANDCs = new HashSet<SACHBANDC>();
         }
     
         public int MADL { get; set; }
@@ -28,8 +30,12 @@ namespace QLsach.Models
         public int TONGNO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONGNO> CONGNO { get; set; }
+        public virtual ICollection<CONGNO> CONGNOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUXUAT> PHIEUXUAT { get; set; }
+        public virtual ICollection<PHIEUTHU> PHIEUTHUs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PHIEUXUAT> PHIEUXUATs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SACHBANDC> SACHBANDCs { get; set; }
     }
 }

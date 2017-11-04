@@ -1,4 +1,4 @@
-﻿@model QLsach.Models.PHIEUXUAT
+﻿@model QLsach.Models.XUATModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,32 +11,45 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NGAY)
+            @Html.DisplayNameFor(model => model.pHIEUXUAT.NGAY)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NGAY)
+            @Html.DisplayFor(model => model.pHIEUXUAT.NGAY)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TINHTRANG)
+            @Html.DisplayNameFor(model => model.pHIEUXUAT.DAILY.TENDL)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TINHTRANG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DAILY.TENDL)
+            @Html.DisplayFor(model => model.pHIEUXUAT.DAILY.TENDL)
         </dd>
 
     </dl>
+    <table class="table">
+        <tr>
+            <th>
+                SÁCH
+            </th>
+            <th>
+                Số lượng
+            </th>
+        </tr>
+
+        @foreach (var item in Model.cTPXes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SACH.TENSACH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SL)
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MAPX }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

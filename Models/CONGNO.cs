@@ -14,13 +14,6 @@ namespace QLsach.Models
     
     public partial class CONGNO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CONGNO()
-        {
-            this.SACHBANDC = new HashSet<SACHBANDC>();
-        }
-    
-        public int ID { get; set; }
         public int MADL { get; set; }
         public int MAPX { get; set; }
         public int TIENNO { get; set; }
@@ -28,7 +21,5 @@ namespace QLsach.Models
     
         public virtual DAILY DAILY { get; set; }
         public virtual PHIEUXUAT PHIEUXUAT { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SACHBANDC> SACHBANDC { get; set; }
     }
 }

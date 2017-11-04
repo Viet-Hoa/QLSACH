@@ -7,9 +7,9 @@
     <Schema Namespace="SachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CONGNO">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="MADL" />
+            <PropertyRef Name="MAPX" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MADL" Type="int" Nullable="false" />
           <Property Name="MAPX" Type="int" Nullable="false" />
           <Property Name="TIENNO" Type="int" Nullable="false" />
@@ -23,7 +23,6 @@
           <Property Name="MAPN" Type="int" Nullable="false" />
           <Property Name="MASACH" Type="int" Nullable="false" />
           <Property Name="SL" Type="int" Nullable="false" />
-          <Property Name="DONGIA" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CTPX">
           <Key>
@@ -33,7 +32,6 @@
           <Property Name="MAPX" Type="int" Nullable="false" />
           <Property Name="MASACH" Type="int" Nullable="false" />
           <Property Name="SL" Type="int" Nullable="false" />
-          <Property Name="DGB" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DAILY">
           <Key>
@@ -63,6 +61,16 @@
           <Property Name="STK" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="TIENNO" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PHIEUCHI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NGAY" Type="date" Nullable="false" />
+          <Property Name="MANXB" Type="int" Nullable="false" />
+          <Property Name="TIEN" Type="int" Nullable="false" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="PHIEUNHAP">
           <Key>
             <PropertyRef Name="MAPN" />
@@ -72,6 +80,16 @@
           <Property Name="MANXB" Type="int" Nullable="false" />
           <Property Name="NGUOIGIAO" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="PHIEUTHU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NGAY" Type="date" Nullable="false" />
+          <Property Name="MADL" Type="int" Nullable="false" />
+          <Property Name="TIEN" Type="int" Nullable="false" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="PHIEUXUAT">
           <Key>
             <PropertyRef Name="MAPX" />
@@ -79,7 +97,6 @@
           <Property Name="MAPX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NGAY" Type="date" Nullable="false" />
           <Property Name="MADL" Type="int" Nullable="false" />
-          <Property Name="TINHTRANG" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -89,17 +106,19 @@
           <Property Name="TENSACH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MANXB" Type="int" Nullable="false" />
           <Property Name="SL" Type="int" Nullable="false" />
-          <Property Name="GIA" Type="int" Nullable="false" />
+          <Property Name="DGM" Type="int" Nullable="false" />
+          <Property Name="DGB" Type="int" Nullable="false" />
           <Property Name="TACGIA" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="THELOAI" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="SACHBANDC">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="MASACH" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAPX" Type="int" Nullable="false" />
           <Property Name="MASACH" Type="int" Nullable="false" />
+          <Property Name="MADL" Type="int" Nullable="false" />
           <Property Name="SL" Type="int" Nullable="false" />
           <Property Name="BANDC" Type="int" Nullable="false" />
         </EntityType>
@@ -112,7 +131,7 @@
           <Property Name="MASACH" Type="int" Nullable="false" />
           <Property Name="SL" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CONGNO__MADL__5DCAEF64">
+        <Association Name="FK__CONGNO__MADL__2B3F6F97">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
           <End Role="CONGNO" Type="Self.CONGNO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,7 +143,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONGNO__MAPX__5EBF139D">
+        <Association Name="FK__CONGNO__MAPX__2C3393D0">
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
           <End Role="CONGNO" Type="Self.CONGNO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,7 +155,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTPN__MAPN__267ABA7A">
+        <Association Name="FK__CTPN__MAPN__2D27B809">
           <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
           <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -148,7 +167,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTPN__MASACH__276EDEB3">
+        <Association Name="FK__CTPN__MASACH__2E1BDC42">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,19 +179,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTPN__MASACH__286302EC">
-          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
-          <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SACH">
-              <PropertyRef Name="MASACH" />
-            </Principal>
-            <Dependent Role="CTPN">
-              <PropertyRef Name="MASACH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CTPX__MAPX__29572725">
+        <Association Name="FK__CTPX__MAPX__2F10007B">
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
           <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTPX__MASACH__2A4B4B5E">
+        <Association Name="FK__CTPX__MASACH__300424B4">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +203,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MANXB__2B3F6F97">
+        <Association Name="FK__PHIEUCHI__MANXB__30F848ED">
+          <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+          <End Role="PHIEUCHI" Type="Self.PHIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NXB">
+              <PropertyRef Name="MANXB" />
+            </Principal>
+            <Dependent Role="PHIEUCHI">
+              <PropertyRef Name="MANXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUNHAP__MANXB__31EC6D26">
           <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
           <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +227,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUXUAT__MADL__2C3393D0">
+        <Association Name="FK__PHIEUTHU__MADL__32E0915F">
+          <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
+          <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DAILY">
+              <PropertyRef Name="MADL" />
+            </Principal>
+            <Dependent Role="PHIEUTHU">
+              <PropertyRef Name="MADL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUXUAT__MADL__33D4B598">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,7 +251,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MANXB__2D27B809">
+        <Association Name="FK__SACH__MANXB__34C8D9D1">
           <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -232,19 +263,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACHBANDC__ID__628FA481">
-          <End Role="CONGNO" Type="Self.CONGNO" Multiplicity="1" />
+        <Association Name="FK__SACHBANDC__MADL__35BCFE0A">
+          <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
           <End Role="SACHBANDC" Type="Self.SACHBANDC" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CONGNO">
-              <PropertyRef Name="ID" />
+            <Principal Role="DAILY">
+              <PropertyRef Name="MADL" />
             </Principal>
             <Dependent Role="SACHBANDC">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="MADL" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACHBANDC__MASAC__6383C8BA">
+        <Association Name="FK__SACHBANDC__MAPX__36B12243">
+          <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
+          <End Role="SACHBANDC" Type="Self.SACHBANDC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEUXUAT">
+              <PropertyRef Name="MAPX" />
+            </Principal>
+            <Dependent Role="SACHBANDC">
+              <PropertyRef Name="MAPX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SACHBANDC__MASAC__37A5467C">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="SACHBANDC" Type="Self.SACHBANDC" Multiplicity="*" />
           <ReferentialConstraint>
@@ -256,7 +299,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MASACH__2E1BDC42">
+        <Association Name="FK__TONKHO__MASACH__38996AB5">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,9 +311,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="tktonkho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ngay" Type="date" Mode="In" />
-        </Function>
         <EntityContainer Name="SachModelStoreContainer">
           <EntitySet Name="CONGNO" EntityType="Self.CONGNO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTPN" EntityType="Self.CTPN" Schema="dbo" store:Type="Tables" />
@@ -278,60 +318,70 @@
           <EntitySet Name="DAILY" EntityType="Self.DAILY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MACDINH" EntityType="Self.MACDINH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NXB" EntityType="Self.NXB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHIEUCHI" EntityType="Self.PHIEUCHI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUXUAT" EntityType="Self.PHIEUXUAT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACHBANDC" EntityType="Self.SACHBANDC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CONGNO__MADL__5DCAEF64" Association="Self.FK__CONGNO__MADL__5DCAEF64">
+          <AssociationSet Name="FK__CONGNO__MADL__2B3F6F97" Association="Self.FK__CONGNO__MADL__2B3F6F97">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="CONGNO" EntitySet="CONGNO" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONGNO__MAPX__5EBF139D" Association="Self.FK__CONGNO__MAPX__5EBF139D">
+          <AssociationSet Name="FK__CONGNO__MAPX__2C3393D0" Association="Self.FK__CONGNO__MAPX__2C3393D0">
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
             <End Role="CONGNO" EntitySet="CONGNO" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPN__MAPN__267ABA7A" Association="Self.FK__CTPN__MAPN__267ABA7A">
+          <AssociationSet Name="FK__CTPN__MAPN__2D27B809" Association="Self.FK__CTPN__MAPN__2D27B809">
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
             <End Role="CTPN" EntitySet="CTPN" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPN__MASACH__276EDEB3" Association="Self.FK__CTPN__MASACH__276EDEB3">
+          <AssociationSet Name="FK__CTPN__MASACH__2E1BDC42" Association="Self.FK__CTPN__MASACH__2E1BDC42">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CTPN" EntitySet="CTPN" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPN__MASACH__286302EC" Association="Self.FK__CTPN__MASACH__286302EC">
-            <End Role="SACH" EntitySet="SACH" />
-            <End Role="CTPN" EntitySet="CTPN" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CTPX__MAPX__29572725" Association="Self.FK__CTPX__MAPX__29572725">
+          <AssociationSet Name="FK__CTPX__MAPX__2F10007B" Association="Self.FK__CTPX__MAPX__2F10007B">
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
             <End Role="CTPX" EntitySet="CTPX" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPX__MASACH__2A4B4B5E" Association="Self.FK__CTPX__MASACH__2A4B4B5E">
+          <AssociationSet Name="FK__CTPX__MASACH__300424B4" Association="Self.FK__CTPX__MASACH__300424B4">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CTPX" EntitySet="CTPX" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MANXB__2B3F6F97" Association="Self.FK__PHIEUNHAP__MANXB__2B3F6F97">
+          <AssociationSet Name="FK__PHIEUCHI__MANXB__30F848ED" Association="Self.FK__PHIEUCHI__MANXB__30F848ED">
+            <End Role="NXB" EntitySet="NXB" />
+            <End Role="PHIEUCHI" EntitySet="PHIEUCHI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUNHAP__MANXB__31EC6D26" Association="Self.FK__PHIEUNHAP__MANXB__31EC6D26">
             <End Role="NXB" EntitySet="NXB" />
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUXUAT__MADL__2C3393D0" Association="Self.FK__PHIEUXUAT__MADL__2C3393D0">
+          <AssociationSet Name="FK__PHIEUTHU__MADL__32E0915F" Association="Self.FK__PHIEUTHU__MADL__32E0915F">
+            <End Role="DAILY" EntitySet="DAILY" />
+            <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUXUAT__MADL__33D4B598" Association="Self.FK__PHIEUXUAT__MADL__33D4B598">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MANXB__2D27B809" Association="Self.FK__SACH__MANXB__2D27B809">
+          <AssociationSet Name="FK__SACH__MANXB__34C8D9D1" Association="Self.FK__SACH__MANXB__34C8D9D1">
             <End Role="NXB" EntitySet="NXB" />
             <End Role="SACH" EntitySet="SACH" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACHBANDC__ID__628FA481" Association="Self.FK__SACHBANDC__ID__628FA481">
-            <End Role="CONGNO" EntitySet="CONGNO" />
+          <AssociationSet Name="FK__SACHBANDC__MADL__35BCFE0A" Association="Self.FK__SACHBANDC__MADL__35BCFE0A">
+            <End Role="DAILY" EntitySet="DAILY" />
             <End Role="SACHBANDC" EntitySet="SACHBANDC" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACHBANDC__MASAC__6383C8BA" Association="Self.FK__SACHBANDC__MASAC__6383C8BA">
+          <AssociationSet Name="FK__SACHBANDC__MAPX__36B12243" Association="Self.FK__SACHBANDC__MAPX__36B12243">
+            <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+            <End Role="SACHBANDC" EntitySet="SACHBANDC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SACHBANDC__MASAC__37A5467C" Association="Self.FK__SACHBANDC__MASAC__37A5467C">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="SACHBANDC" EntitySet="SACHBANDC" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MASACH__2E1BDC42" Association="Self.FK__TONKHO__MASACH__2E1BDC42">
+          <AssociationSet Name="FK__TONKHO__MASACH__38996AB5" Association="Self.FK__TONKHO__MASACH__38996AB5">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
@@ -342,16 +392,15 @@
       <Schema Namespace="SachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CONGNO">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="MADL" />
+            <PropertyRef Name="MAPX" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MADL" Type="Int32" Nullable="false" />
           <Property Name="MAPX" Type="Int32" Nullable="false" />
           <Property Name="TIENNO" Type="Int32" Nullable="false" />
           <Property Name="TIENTRA" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DAILY" Relationship="Self.FK__CONGNO__MADL__5DCAEF64" FromRole="CONGNO" ToRole="DAILY" />
-          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__CONGNO__MAPX__5EBF139D" FromRole="CONGNO" ToRole="PHIEUXUAT" />
-          <NavigationProperty Name="SACHBANDC" Relationship="Self.FK__SACHBANDC__ID__628FA481" FromRole="CONGNO" ToRole="SACHBANDC" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__CONGNO__MADL__2B3F6F97" FromRole="CONGNO" ToRole="DAILY" />
+          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__CONGNO__MAPX__2C3393D0" FromRole="CONGNO" ToRole="PHIEUXUAT" />
         </EntityType>
         <EntityType Name="CTPN">
           <Key>
@@ -361,9 +410,8 @@
           <Property Name="MAPN" Type="Int32" Nullable="false" />
           <Property Name="MASACH" Type="Int32" Nullable="false" />
           <Property Name="SL" Type="Int32" Nullable="false" />
-          <Property Name="DONGIA" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PHIEUNHAP" Relationship="Self.FK__CTPN__MAPN__267ABA7A" FromRole="CTPN" ToRole="PHIEUNHAP" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__CTPN__MASACH__276EDEB3" FromRole="CTPN" ToRole="SACH" />
+          <NavigationProperty Name="PHIEUNHAP" Relationship="Self.FK__CTPN__MAPN__2D27B809" FromRole="CTPN" ToRole="PHIEUNHAP" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__CTPN__MASACH__2E1BDC42" FromRole="CTPN" ToRole="SACH" />
         </EntityType>
         <EntityType Name="CTPX">
           <Key>
@@ -373,9 +421,8 @@
           <Property Name="MAPX" Type="Int32" Nullable="false" />
           <Property Name="MASACH" Type="Int32" Nullable="false" />
           <Property Name="SL" Type="Int32" Nullable="false" />
-          <Property Name="DGB" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__CTPX__MAPX__29572725" FromRole="CTPX" ToRole="PHIEUXUAT" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__CTPX__MASACH__2A4B4B5E" FromRole="CTPX" ToRole="SACH" />
+          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__CTPX__MAPX__2F10007B" FromRole="CTPX" ToRole="PHIEUXUAT" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__CTPX__MASACH__300424B4" FromRole="CTPX" ToRole="SACH" />
         </EntityType>
         <EntityType Name="DAILY">
           <Key>
@@ -386,8 +433,10 @@
           <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DIENTHOAI" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="TONGNO" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CONGNO" Relationship="Self.FK__CONGNO__MADL__5DCAEF64" FromRole="DAILY" ToRole="CONGNO" />
-          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__PHIEUXUAT__MADL__2C3393D0" FromRole="DAILY" ToRole="PHIEUXUAT" />
+          <NavigationProperty Name="CONGNOes" Relationship="Self.FK__CONGNO__MADL__2B3F6F97" FromRole="DAILY" ToRole="CONGNO" />
+          <NavigationProperty Name="PHIEUTHUs" Relationship="Self.FK__PHIEUTHU__MADL__32E0915F" FromRole="DAILY" ToRole="PHIEUTHU" />
+          <NavigationProperty Name="PHIEUXUATs" Relationship="Self.FK__PHIEUXUAT__MADL__33D4B598" FromRole="DAILY" ToRole="PHIEUXUAT" />
+          <NavigationProperty Name="SACHBANDCs" Relationship="Self.FK__SACHBANDC__MADL__35BCFE0A" FromRole="DAILY" ToRole="SACHBANDC" />
         </EntityType>
         <EntityType Name="MACDINH">
           <Key>
@@ -406,8 +455,20 @@
           <Property Name="DIENTHOAI" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="STK" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="TIENNO" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PHIEUNHAP" Relationship="Self.FK__PHIEUNHAP__MANXB__2B3F6F97" FromRole="NXB" ToRole="PHIEUNHAP" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__SACH__MANXB__2D27B809" FromRole="NXB" ToRole="SACH" />
+          <NavigationProperty Name="PHIEUCHIs" Relationship="Self.FK__PHIEUCHI__MANXB__30F848ED" FromRole="NXB" ToRole="PHIEUCHI" />
+          <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FK__PHIEUNHAP__MANXB__31EC6D26" FromRole="NXB" ToRole="PHIEUNHAP" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MANXB__34C8D9D1" FromRole="NXB" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="PHIEUCHI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MANXB" Type="Int32" Nullable="false" />
+          <Property Name="TIEN" Type="Int32" Nullable="false" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NXB" Relationship="Self.FK__PHIEUCHI__MANXB__30F848ED" FromRole="PHIEUCHI" ToRole="NXB" />
         </EntityType>
         <EntityType Name="PHIEUNHAP">
           <Key>
@@ -417,8 +478,19 @@
           <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MANXB" Type="Int32" Nullable="false" />
           <Property Name="NGUOIGIAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CTPN" Relationship="Self.FK__CTPN__MAPN__267ABA7A" FromRole="PHIEUNHAP" ToRole="CTPN" />
-          <NavigationProperty Name="NXB" Relationship="Self.FK__PHIEUNHAP__MANXB__2B3F6F97" FromRole="PHIEUNHAP" ToRole="NXB" />
+          <NavigationProperty Name="CTPNs" Relationship="Self.FK__CTPN__MAPN__2D27B809" FromRole="PHIEUNHAP" ToRole="CTPN" />
+          <NavigationProperty Name="NXB" Relationship="Self.FK__PHIEUNHAP__MANXB__31EC6D26" FromRole="PHIEUNHAP" ToRole="NXB" />
+        </EntityType>
+        <EntityType Name="PHIEUTHU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MADL" Type="Int32" Nullable="false" />
+          <Property Name="TIEN" Type="Int32" Nullable="false" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__PHIEUTHU__MADL__32E0915F" FromRole="PHIEUTHU" ToRole="DAILY" />
         </EntityType>
         <EntityType Name="PHIEUXUAT">
           <Key>
@@ -427,10 +499,10 @@
           <Property Name="MAPX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MADL" Type="Int32" Nullable="false" />
-          <Property Name="TINHTRANG" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="CONGNO" Relationship="Self.FK__CONGNO__MAPX__5EBF139D" FromRole="PHIEUXUAT" ToRole="CONGNO" />
-          <NavigationProperty Name="CTPX" Relationship="Self.FK__CTPX__MAPX__29572725" FromRole="PHIEUXUAT" ToRole="CTPX" />
-          <NavigationProperty Name="DAILY" Relationship="Self.FK__PHIEUXUAT__MADL__2C3393D0" FromRole="PHIEUXUAT" ToRole="DAILY" />
+          <NavigationProperty Name="CONGNOes" Relationship="Self.FK__CONGNO__MAPX__2C3393D0" FromRole="PHIEUXUAT" ToRole="CONGNO" />
+          <NavigationProperty Name="CTPXes" Relationship="Self.FK__CTPX__MAPX__2F10007B" FromRole="PHIEUXUAT" ToRole="CTPX" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__PHIEUXUAT__MADL__33D4B598" FromRole="PHIEUXUAT" ToRole="DAILY" />
+          <NavigationProperty Name="SACHBANDCs" Relationship="Self.FK__SACHBANDC__MAPX__36B12243" FromRole="PHIEUXUAT" ToRole="SACHBANDC" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -440,26 +512,29 @@
           <Property Name="TENSACH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MANXB" Type="Int32" Nullable="false" />
           <Property Name="SL" Type="Int32" Nullable="false" />
-          <Property Name="GIA" Type="Int32" Nullable="false" />
+          <Property Name="DGM" Type="Int32" Nullable="false" />
+          <Property Name="DGB" Type="Int32" Nullable="false" />
           <Property Name="TACGIA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="THELOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CTPN" Relationship="Self.FK__CTPN__MASACH__276EDEB3" FromRole="SACH" ToRole="CTPN" />
-          <NavigationProperty Name="CTPX" Relationship="Self.FK__CTPX__MASACH__2A4B4B5E" FromRole="SACH" ToRole="CTPX" />
-          <NavigationProperty Name="NXB" Relationship="Self.FK__SACH__MANXB__2D27B809" FromRole="SACH" ToRole="NXB" />
-          <NavigationProperty Name="SACHBANDC" Relationship="Self.FK__SACHBANDC__MASAC__6383C8BA" FromRole="SACH" ToRole="SACHBANDC" />
-          <NavigationProperty Name="TONKHO" Relationship="Self.FK__TONKHO__MASACH__2E1BDC42" FromRole="SACH" ToRole="TONKHO" />
+          <NavigationProperty Name="CTPNs" Relationship="Self.FK__CTPN__MASACH__2E1BDC42" FromRole="SACH" ToRole="CTPN" />
+          <NavigationProperty Name="CTPXes" Relationship="Self.FK__CTPX__MASACH__300424B4" FromRole="SACH" ToRole="CTPX" />
+          <NavigationProperty Name="NXB" Relationship="Self.FK__SACH__MANXB__34C8D9D1" FromRole="SACH" ToRole="NXB" />
+          <NavigationProperty Name="SACHBANDCs" Relationship="Self.FK__SACHBANDC__MASAC__37A5467C" FromRole="SACH" ToRole="SACHBANDC" />
+          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MASACH__38996AB5" FromRole="SACH" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="SACHBANDC">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="MASACH" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAPX" Type="Int32" Nullable="false" />
           <Property Name="MASACH" Type="Int32" Nullable="false" />
+          <Property Name="MADL" Type="Int32" Nullable="false" />
           <Property Name="SL" Type="Int32" Nullable="false" />
           <Property Name="BANDC" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CONGNO" Relationship="Self.FK__SACHBANDC__ID__628FA481" FromRole="SACHBANDC" ToRole="CONGNO" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__SACHBANDC__MASAC__6383C8BA" FromRole="SACHBANDC" ToRole="SACH" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__SACHBANDC__MADL__35BCFE0A" FromRole="SACHBANDC" ToRole="DAILY" />
+          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__SACHBANDC__MAPX__36B12243" FromRole="SACHBANDC" ToRole="PHIEUXUAT" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__SACHBANDC__MASAC__37A5467C" FromRole="SACHBANDC" ToRole="SACH" />
         </EntityType>
         <EntityType Name="TONKHO">
           <Key>
@@ -469,9 +544,9 @@
           <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MASACH" Type="Int32" Nullable="false" />
           <Property Name="SL" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MASACH__2E1BDC42" FromRole="TONKHO" ToRole="SACH" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MASACH__38996AB5" FromRole="TONKHO" ToRole="SACH" />
         </EntityType>
-        <Association Name="FK__CONGNO__MADL__5DCAEF64">
+        <Association Name="FK__CONGNO__MADL__2B3F6F97">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
           <End Role="CONGNO" Type="Self.CONGNO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -483,7 +558,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONGNO__MAPX__5EBF139D">
+        <Association Name="FK__CONGNO__MAPX__2C3393D0">
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
           <End Role="CONGNO" Type="Self.CONGNO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -495,19 +570,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACHBANDC__ID__628FA481">
-          <End Role="CONGNO" Type="Self.CONGNO" Multiplicity="1" />
-          <End Role="SACHBANDC" Type="Self.SACHBANDC" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONGNO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SACHBANDC">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CTPN__MAPN__267ABA7A">
+        <Association Name="FK__CTPN__MAPN__2D27B809">
           <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
           <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -519,7 +582,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTPN__MASACH__276EDEB3">
+        <Association Name="FK__CTPN__MASACH__2E1BDC42">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -531,7 +594,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTPX__MAPX__29572725">
+        <Association Name="FK__CTPX__MAPX__2F10007B">
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
           <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
           <ReferentialConstraint>
@@ -543,7 +606,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTPX__MASACH__2A4B4B5E">
+        <Association Name="FK__CTPX__MASACH__300424B4">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
           <ReferentialConstraint>
@@ -555,7 +618,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUXUAT__MADL__2C3393D0">
+        <Association Name="FK__PHIEUTHU__MADL__32E0915F">
+          <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
+          <End Role="PHIEUTHU" Type="Self.PHIEUTHU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DAILY">
+              <PropertyRef Name="MADL" />
+            </Principal>
+            <Dependent Role="PHIEUTHU">
+              <PropertyRef Name="MADL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUXUAT__MADL__33D4B598">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -567,7 +642,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MANXB__2B3F6F97">
+        <Association Name="FK__SACHBANDC__MADL__35BCFE0A">
+          <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
+          <End Role="SACHBANDC" Type="Self.SACHBANDC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DAILY">
+              <PropertyRef Name="MADL" />
+            </Principal>
+            <Dependent Role="SACHBANDC">
+              <PropertyRef Name="MADL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUCHI__MANXB__30F848ED">
+          <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+          <End Role="PHIEUCHI" Type="Self.PHIEUCHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NXB">
+              <PropertyRef Name="MANXB" />
+            </Principal>
+            <Dependent Role="PHIEUCHI">
+              <PropertyRef Name="MANXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUNHAP__MANXB__31EC6D26">
           <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
           <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -579,7 +678,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACH__MANXB__2D27B809">
+        <Association Name="FK__SACH__MANXB__34C8D9D1">
           <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -591,7 +690,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SACHBANDC__MASAC__6383C8BA">
+        <Association Name="FK__SACHBANDC__MAPX__36B12243">
+          <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
+          <End Role="SACHBANDC" Type="Self.SACHBANDC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEUXUAT">
+              <PropertyRef Name="MAPX" />
+            </Principal>
+            <Dependent Role="SACHBANDC">
+              <PropertyRef Name="MAPX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SACHBANDC__MASAC__37A5467C">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="SACHBANDC" Type="Self.SACHBANDC" Multiplicity="*" />
           <ReferentialConstraint>
@@ -603,7 +714,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MASACH__2E1BDC42">
+        <Association Name="FK__TONKHO__MASACH__38996AB5">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -616,88 +727,89 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SachEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CONGNO" EntityType="Self.CONGNO" />
-          <EntitySet Name="CTPN" EntityType="Self.CTPN" />
-          <EntitySet Name="CTPX" EntityType="Self.CTPX" />
-          <EntitySet Name="DAILY" EntityType="Self.DAILY" />
-          <EntitySet Name="MACDINH" EntityType="Self.MACDINH" />
-          <EntitySet Name="NXB" EntityType="Self.NXB" />
-          <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" />
-          <EntitySet Name="PHIEUXUAT" EntityType="Self.PHIEUXUAT" />
-          <EntitySet Name="SACH" EntityType="Self.SACH" />
-          <EntitySet Name="SACHBANDC" EntityType="Self.SACHBANDC" />
-          <EntitySet Name="TONKHO" EntityType="Self.TONKHO" />
-          <AssociationSet Name="FK__CONGNO__MADL__5DCAEF64" Association="Self.FK__CONGNO__MADL__5DCAEF64">
-            <End Role="DAILY" EntitySet="DAILY" />
-            <End Role="CONGNO" EntitySet="CONGNO" />
+          <EntitySet Name="CONGNOes" EntityType="Self.CONGNO" />
+          <EntitySet Name="CTPNs" EntityType="Self.CTPN" />
+          <EntitySet Name="CTPXes" EntityType="Self.CTPX" />
+          <EntitySet Name="DAILies" EntityType="Self.DAILY" />
+          <EntitySet Name="MACDINHs" EntityType="Self.MACDINH" />
+          <EntitySet Name="NXBs" EntityType="Self.NXB" />
+          <EntitySet Name="PHIEUCHIs" EntityType="Self.PHIEUCHI" />
+          <EntitySet Name="PHIEUNHAPs" EntityType="Self.PHIEUNHAP" />
+          <EntitySet Name="PHIEUTHUs" EntityType="Self.PHIEUTHU" />
+          <EntitySet Name="PHIEUXUATs" EntityType="Self.PHIEUXUAT" />
+          <EntitySet Name="SACHes" EntityType="Self.SACH" />
+          <EntitySet Name="SACHBANDCs" EntityType="Self.SACHBANDC" />
+          <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
+          <AssociationSet Name="FK__CONGNO__MADL__2B3F6F97" Association="Self.FK__CONGNO__MADL__2B3F6F97">
+            <End Role="DAILY" EntitySet="DAILies" />
+            <End Role="CONGNO" EntitySet="CONGNOes" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONGNO__MAPX__5EBF139D" Association="Self.FK__CONGNO__MAPX__5EBF139D">
-            <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
-            <End Role="CONGNO" EntitySet="CONGNO" />
+          <AssociationSet Name="FK__CONGNO__MAPX__2C3393D0" Association="Self.FK__CONGNO__MAPX__2C3393D0">
+            <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+            <End Role="CONGNO" EntitySet="CONGNOes" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACHBANDC__ID__628FA481" Association="Self.FK__SACHBANDC__ID__628FA481">
-            <End Role="CONGNO" EntitySet="CONGNO" />
-            <End Role="SACHBANDC" EntitySet="SACHBANDC" />
+          <AssociationSet Name="FK__CTPN__MAPN__2D27B809" Association="Self.FK__CTPN__MAPN__2D27B809">
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+            <End Role="CTPN" EntitySet="CTPNs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPN__MAPN__267ABA7A" Association="Self.FK__CTPN__MAPN__267ABA7A">
-            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
-            <End Role="CTPN" EntitySet="CTPN" />
+          <AssociationSet Name="FK__CTPN__MASACH__2E1BDC42" Association="Self.FK__CTPN__MASACH__2E1BDC42">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="CTPN" EntitySet="CTPNs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPN__MASACH__276EDEB3" Association="Self.FK__CTPN__MASACH__276EDEB3">
-            <End Role="SACH" EntitySet="SACH" />
-            <End Role="CTPN" EntitySet="CTPN" />
+          <AssociationSet Name="FK__CTPX__MAPX__2F10007B" Association="Self.FK__CTPX__MAPX__2F10007B">
+            <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+            <End Role="CTPX" EntitySet="CTPXes" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPX__MAPX__29572725" Association="Self.FK__CTPX__MAPX__29572725">
-            <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
-            <End Role="CTPX" EntitySet="CTPX" />
+          <AssociationSet Name="FK__CTPX__MASACH__300424B4" Association="Self.FK__CTPX__MASACH__300424B4">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="CTPX" EntitySet="CTPXes" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTPX__MASACH__2A4B4B5E" Association="Self.FK__CTPX__MASACH__2A4B4B5E">
-            <End Role="SACH" EntitySet="SACH" />
-            <End Role="CTPX" EntitySet="CTPX" />
+          <AssociationSet Name="FK__PHIEUTHU__MADL__32E0915F" Association="Self.FK__PHIEUTHU__MADL__32E0915F">
+            <End Role="DAILY" EntitySet="DAILies" />
+            <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUXUAT__MADL__2C3393D0" Association="Self.FK__PHIEUXUAT__MADL__2C3393D0">
-            <End Role="DAILY" EntitySet="DAILY" />
-            <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+          <AssociationSet Name="FK__PHIEUXUAT__MADL__33D4B598" Association="Self.FK__PHIEUXUAT__MADL__33D4B598">
+            <End Role="DAILY" EntitySet="DAILies" />
+            <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MANXB__2B3F6F97" Association="Self.FK__PHIEUNHAP__MANXB__2B3F6F97">
-            <End Role="NXB" EntitySet="NXB" />
-            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+          <AssociationSet Name="FK__SACHBANDC__MADL__35BCFE0A" Association="Self.FK__SACHBANDC__MADL__35BCFE0A">
+            <End Role="DAILY" EntitySet="DAILies" />
+            <End Role="SACHBANDC" EntitySet="SACHBANDCs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACH__MANXB__2D27B809" Association="Self.FK__SACH__MANXB__2D27B809">
-            <End Role="NXB" EntitySet="NXB" />
-            <End Role="SACH" EntitySet="SACH" />
+          <AssociationSet Name="FK__PHIEUCHI__MANXB__30F848ED" Association="Self.FK__PHIEUCHI__MANXB__30F848ED">
+            <End Role="NXB" EntitySet="NXBs" />
+            <End Role="PHIEUCHI" EntitySet="PHIEUCHIs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SACHBANDC__MASAC__6383C8BA" Association="Self.FK__SACHBANDC__MASAC__6383C8BA">
-            <End Role="SACH" EntitySet="SACH" />
-            <End Role="SACHBANDC" EntitySet="SACHBANDC" />
+          <AssociationSet Name="FK__PHIEUNHAP__MANXB__31EC6D26" Association="Self.FK__PHIEUNHAP__MANXB__31EC6D26">
+            <End Role="NXB" EntitySet="NXBs" />
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MASACH__2E1BDC42" Association="Self.FK__TONKHO__MASACH__2E1BDC42">
-            <End Role="SACH" EntitySet="SACH" />
-            <End Role="TONKHO" EntitySet="TONKHO" />
+          <AssociationSet Name="FK__SACH__MANXB__34C8D9D1" Association="Self.FK__SACH__MANXB__34C8D9D1">
+            <End Role="NXB" EntitySet="NXBs" />
+            <End Role="SACH" EntitySet="SACHes" />
           </AssociationSet>
-          <FunctionImport Name="tktonkho" ReturnType="Collection(SachModel.tktonkho_Result)">
-          <Parameter Name="ngay" Mode="In" Type="DateTime" />
-          </FunctionImport>
+          <AssociationSet Name="FK__SACHBANDC__MAPX__36B12243" Association="Self.FK__SACHBANDC__MAPX__36B12243">
+            <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
+            <End Role="SACHBANDC" EntitySet="SACHBANDCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SACHBANDC__MASAC__37A5467C" Association="Self.FK__SACHBANDC__MASAC__37A5467C">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="SACHBANDC" EntitySet="SACHBANDCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TONKHO__MASACH__38996AB5" Association="Self.FK__TONKHO__MASACH__38996AB5">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="TONKHO" EntitySet="TONKHOes" />
+          </AssociationSet>
         </EntityContainer>
-        <ComplexType Name="tktonkho_Result">
-          <Property Type="Int32" Name="MASACH" Nullable="false" />
-          <Property Type="String" Name="TENSACH" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="SL" Nullable="false" />
-          <Property Type="Int32" Name="GIA" Nullable="false" />
-          <Property Type="String" Name="TACGIA" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="THELOAI" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="MANXB" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SachModelStoreContainer" CdmEntityContainer="SachEntities">
-          <EntitySetMapping Name="CONGNO">
+          <EntitySetMapping Name="CONGNOes">
             <EntityTypeMapping TypeName="SachModel.CONGNO">
               <MappingFragment StoreEntitySet="CONGNO">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MADL" ColumnName="MADL" />
                 <ScalarProperty Name="MAPX" ColumnName="MAPX" />
                 <ScalarProperty Name="TIENNO" ColumnName="TIENNO" />
@@ -705,27 +817,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CTPN">
+          <EntitySetMapping Name="CTPNs">
             <EntityTypeMapping TypeName="SachModel.CTPN">
               <MappingFragment StoreEntitySet="CTPN">
                 <ScalarProperty Name="MAPN" ColumnName="MAPN" />
                 <ScalarProperty Name="MASACH" ColumnName="MASACH" />
                 <ScalarProperty Name="SL" ColumnName="SL" />
-                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CTPX">
+          <EntitySetMapping Name="CTPXes">
             <EntityTypeMapping TypeName="SachModel.CTPX">
               <MappingFragment StoreEntitySet="CTPX">
                 <ScalarProperty Name="MAPX" ColumnName="MAPX" />
                 <ScalarProperty Name="MASACH" ColumnName="MASACH" />
                 <ScalarProperty Name="SL" ColumnName="SL" />
-                <ScalarProperty Name="DGB" ColumnName="DGB" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DAILY">
+          <EntitySetMapping Name="DAILies">
             <EntityTypeMapping TypeName="SachModel.DAILY">
               <MappingFragment StoreEntitySet="DAILY">
                 <ScalarProperty Name="MADL" ColumnName="MADL" />
@@ -736,7 +846,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MACDINH">
+          <EntitySetMapping Name="MACDINHs">
             <EntityTypeMapping TypeName="SachModel.MACDINH">
               <MappingFragment StoreEntitySet="MACDINH">
                 <ScalarProperty Name="TEN" ColumnName="TEN" />
@@ -744,7 +854,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NXB">
+          <EntitySetMapping Name="NXBs">
             <EntityTypeMapping TypeName="SachModel.NXB">
               <MappingFragment StoreEntitySet="NXB">
                 <ScalarProperty Name="MANXB" ColumnName="MANXB" />
@@ -756,7 +866,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PHIEUNHAP">
+          <EntitySetMapping Name="PHIEUCHIs">
+            <EntityTypeMapping TypeName="SachModel.PHIEUCHI">
+              <MappingFragment StoreEntitySet="PHIEUCHI">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+                <ScalarProperty Name="TIEN" ColumnName="TIEN" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHIEUNHAPs">
             <EntityTypeMapping TypeName="SachModel.PHIEUNHAP">
               <MappingFragment StoreEntitySet="PHIEUNHAP">
                 <ScalarProperty Name="MAPN" ColumnName="MAPN" />
@@ -766,40 +887,53 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PHIEUXUAT">
+          <EntitySetMapping Name="PHIEUTHUs">
+            <EntityTypeMapping TypeName="SachModel.PHIEUTHU">
+              <MappingFragment StoreEntitySet="PHIEUTHU">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="MADL" ColumnName="MADL" />
+                <ScalarProperty Name="TIEN" ColumnName="TIEN" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHIEUXUATs">
             <EntityTypeMapping TypeName="SachModel.PHIEUXUAT">
               <MappingFragment StoreEntitySet="PHIEUXUAT">
                 <ScalarProperty Name="MAPX" ColumnName="MAPX" />
                 <ScalarProperty Name="NGAY" ColumnName="NGAY" />
                 <ScalarProperty Name="MADL" ColumnName="MADL" />
-                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SACH">
+          <EntitySetMapping Name="SACHes">
             <EntityTypeMapping TypeName="SachModel.SACH">
               <MappingFragment StoreEntitySet="SACH">
                 <ScalarProperty Name="MASACH" ColumnName="MASACH" />
                 <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
                 <ScalarProperty Name="MANXB" ColumnName="MANXB" />
                 <ScalarProperty Name="SL" ColumnName="SL" />
-                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="DGM" ColumnName="DGM" />
+                <ScalarProperty Name="DGB" ColumnName="DGB" />
                 <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
                 <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SACHBANDC">
+          <EntitySetMapping Name="SACHBANDCs">
             <EntityTypeMapping TypeName="SachModel.SACHBANDC">
               <MappingFragment StoreEntitySet="SACHBANDC">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MAPX" ColumnName="MAPX" />
                 <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="MADL" ColumnName="MADL" />
                 <ScalarProperty Name="SL" ColumnName="SL" />
                 <ScalarProperty Name="BANDC" ColumnName="BANDC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TONKHO">
+          <EntitySetMapping Name="TONKHOes">
             <EntityTypeMapping TypeName="SachModel.TONKHO">
               <MappingFragment StoreEntitySet="TONKHO">
                 <ScalarProperty Name="NGAY" ColumnName="NGAY" />
@@ -808,19 +942,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="tktonkho" FunctionName="SachModel.Store.tktonkho">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SachModel.tktonkho_Result">
-                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
-                <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
-                <ScalarProperty Name="SL" ColumnName="SL" />
-                <ScalarProperty Name="GIA" ColumnName="GIA" />
-                <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
-                <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
-                <ScalarProperty Name="MANXB" ColumnName="MANXB" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -835,7 +956,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

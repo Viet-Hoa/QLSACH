@@ -17,8 +17,8 @@ namespace QLsach.Controllers
         // GET: PHIEUXUATs
         public ActionResult Index()
         {
-            var pHIEUXUAT = db.PHIEUXUAT.Include(p => p.DAILY);
-            return View(pHIEUXUAT.ToList());
+            var pHIEUXUATs = db.PHIEUXUATs.Include(p => p.DAILY);
+            return View(pHIEUXUATs.ToList());
         }
 
         // GET: PHIEUXUATs/Details/5
@@ -28,37 +28,95 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
-            if (pHIEUXUAT == null)
+            var xuat = new XUATModel();
+            xuat.pHIEUXUAT = db.PHIEUXUATs.Include(s => s.DAILY).Where(s => s.MAPX == id).FirstOrDefault();
+            xuat.cTPXes = db.CTPXes.Include(s => s.SACH).Where(s => s.MAPX == id).ToList();
+            if (xuat == null)
             {
                 return HttpNotFound();
             }
-            return View(pHIEUXUAT);
+            return View(xuat);
         }
 
         // GET: PHIEUXUATs/Create
         public ActionResult Create()
         {
-            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL");
+            ViewBag.MANXB = new SelectList(db.DAILies, "MADL", "TENDL");
+            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
             return View();
         }
 
-        // POST: PHIEUXUATs/Create
+        // POST: PHIEUNHAPs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MAPX,NGAY,MADL,TINHTRANG")] PHIEUXUAT pHIEUXUAT)
+        public ActionResult Create([Bind(Include = "MAPX,NGAY,MADL")] PHIEUXUAT phieuxuat,
+                                   [Bind(Include = "MAPN,MASACH,SL")] CTPX[] ctpx)
         {
+            ViewBag.mess = null;
             if (ModelState.IsValid)
             {
-                db.PHIEUXUAT.Add(pHIEUXUAT);
+                db.PHIEUXUATs.Add(phieuxuat);
+                db.SaveChanges();
+                int ma = db.PHIEUNHAPs.Select(x => x.MAPN).LastOrDefault();
+                int t = 0;
+                foreach(CTPX u in ctpx)
+                {
+                    SACH a = db.SACHes.Find(u.MASACH);
+                    if(u.SL>a.SL)
+                    {
+                        ViewBag.mess = "Quá số lượng";
+                        return View();
+                    }
+                    t = t + u.SL * a.DGB;
+                }
+                DAILY n = db.DAILies.Find(phieuxuat.MADL);
+                n.TONGNO = n.TONGNO + t;
+                var mdn =db.MACDINHs.FirstOrDefault();
+                if(n.TONGNO>int.Parse(mdn.GIATRI))
+                {
+                    ViewBag.mess = "Đại lý nợ quá " + mdn.GIATRI;
+                    return View();
+                }
+                db.Entry(n).State = EntityState.Modified;
+                db.SaveChanges();
+                foreach (CTPX u in ctpx)
+                {
+                    if (u != null)
+                    {
+                        u.MAPX = ma;
+                        db.CTPXes.Add(u);
+                        db.SaveChanges();
+                        SACH a = db.SACHes.Find(u.MASACH);
+                        a.SL = a.SL - u.SL;
+                        db.Entry(a).State = EntityState.Modified;
+                        db.SaveChanges();
+                        SACHBANDC s = new SACHBANDC();
+                        s.MAPX = phieuxuat.MAPX;
+                        s.MADL = phieuxuat.MADL;
+                        s.SL = u.SL;
+                        s.BANDC = 0;
+                        db.SACHBANDCs.Add(s);
+                        db.SaveChanges();
+                    }
+                }
+                CONGNO c = new CONGNO();
+                c.MAPX = phieuxuat.MAPX;
+                c.MADL = phieuxuat.MADL;
+                c.TIENNO = t;
+                c.TIENTRA = 0;
+                db.CONGNOes.Add(c);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL", pHIEUXUAT.MADL);
-            return View(pHIEUXUAT);
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", phieuxuat.MADL);
+            ViewBag.MASACH = new SelectList(db.SACHes, "MASACH", "TENSACH");
+            phieuxuat.CTPXes = ctpx;
+            createxuat pnvm = new createxuat();
+            pnvm.px = phieuxuat;
+            return View(pnvm);
         }
 
         // GET: PHIEUXUATs/Edit/5
@@ -68,12 +126,12 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
+            PHIEUXUAT pHIEUXUAT = db.PHIEUXUATs.Find(id);
             if (pHIEUXUAT == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL", pHIEUXUAT.MADL);
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUXUAT.MADL);
             return View(pHIEUXUAT);
         }
 
@@ -90,7 +148,7 @@ namespace QLsach.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MADL = new SelectList(db.DAILY, "MADL", "TENDL", pHIEUXUAT.MADL);
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUXUAT.MADL);
             return View(pHIEUXUAT);
         }
 
@@ -101,7 +159,7 @@ namespace QLsach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
+            PHIEUXUAT pHIEUXUAT = db.PHIEUXUATs.Find(id);
             if (pHIEUXUAT == null)
             {
                 return HttpNotFound();
@@ -114,8 +172,8 @@ namespace QLsach.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PHIEUXUAT pHIEUXUAT = db.PHIEUXUAT.Find(id);
-            db.PHIEUXUAT.Remove(pHIEUXUAT);
+            PHIEUXUAT pHIEUXUAT = db.PHIEUXUATs.Find(id);
+            db.PHIEUXUATs.Remove(pHIEUXUAT);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -17,8 +17,9 @@ namespace QLsach.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NXB()
         {
-            this.PHIEUNHAP = new HashSet<PHIEUNHAP>();
-            this.SACH = new HashSet<SACH>();
+            this.PHIEUCHIs = new HashSet<PHIEUCHI>();
+            this.PHIEUNHAPs = new HashSet<PHIEUNHAP>();
+            this.SACHes = new HashSet<SACH>();
         }
     
         public int MANXB { get; set; }
@@ -29,8 +30,10 @@ namespace QLsach.Models
         public int TIENNO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUNHAP> PHIEUNHAP { get; set; }
+        public virtual ICollection<PHIEUCHI> PHIEUCHIs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SACH> SACH { get; set; }
+        public virtual ICollection<PHIEUNHAP> PHIEUNHAPs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SACH> SACHes { get; set; }
     }
 }

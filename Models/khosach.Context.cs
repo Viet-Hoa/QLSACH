@@ -12,8 +12,6 @@ namespace QLsach.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class SachEntities : DbContext
     {
@@ -27,17 +25,18 @@ namespace QLsach.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CONGNO> CONGNO { get; set; }
-        public virtual DbSet<CTPN> CTPN { get; set; }
-        public virtual DbSet<CTPX> CTPX { get; set; }
-        public virtual DbSet<DAILY> DAILY { get; set; }
-        public virtual DbSet<MACDINH> MACDINH { get; set; }
-        public virtual DbSet<NXB> NXB { get; set; }
-        public virtual DbSet<PHIEUNHAP> PHIEUNHAP { get; set; }
-        public virtual DbSet<PHIEUXUAT> PHIEUXUAT { get; set; }
-        public virtual DbSet<SACH> SACH { get; set; }
-        public virtual DbSet<SACHBANDC> SACHBANDC { get; set; }
-        public virtual DbSet<TONKHO> TONKHO { get; set; }
-    
+        public virtual DbSet<CONGNO> CONGNOes { get; set; }
+        public virtual DbSet<CTPN> CTPNs { get; set; }
+        public virtual DbSet<CTPX> CTPXes { get; set; }
+        public virtual DbSet<DAILY> DAILies { get; set; }
+        public virtual DbSet<MACDINH> MACDINHs { get; set; }
+        public virtual DbSet<NXB> NXBs { get; set; }
+        public virtual DbSet<PHIEUCHI> PHIEUCHIs { get; set; }
+        public virtual DbSet<PHIEUNHAP> PHIEUNHAPs { get; set; }
+        public virtual DbSet<PHIEUTHU> PHIEUTHUs { get; set; }
+        public virtual DbSet<PHIEUXUAT> PHIEUXUATs { get; set; }
+        public virtual DbSet<SACH> SACHes { get; set; }
+        public virtual DbSet<SACHBANDC> SACHBANDCs { get; set; }
+        public virtual DbSet<TONKHO> TONKHOes { get; set; }
     }
 }

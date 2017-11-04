@@ -1,7 +1,9 @@
-﻿@model QLsach.Models.NHAPModel
+﻿@model QLsach.Models.createnhap
 
 @{
     ViewBag.Title = "Create";
+    int i = 0;
+    var xx = ViewBag.mess;
 }
 
 <h2>Create</h2>
@@ -14,51 +16,95 @@
     <div class="form-horizontal">
         <h4>PHIEUNHAP</h4>
         <hr />
+        <p class="alert-danger">@xx</p>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.pHIEUNHAP.NGAY, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Ngày", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.pHIEUNHAP.NGAY, new { htmlAttributes = new { @class = "form-control",type="date" } })
-                @Html.ValidationMessageFor(model => model.pHIEUNHAP.NGAY, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.pn.NGAY, new { htmlAttributes = new { @class = "form-control",type="date" } })
+                @Html.ValidationMessageFor(model => model.pn.NGAY, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.pHIEUNHAP.MANXB, "MANXB", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("NXB", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MANXB", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.pHIEUNHAP.MANXB, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.pn.MANXB, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.pHIEUNHAP.NGUOIGIAO, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Người giao", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.pHIEUNHAP.NGUOIGIAO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.pHIEUNHAP.NGUOIGIAO, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.pn.NGUOIGIAO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pn.NGUOIGIAO, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div id="ctpn-list">
-            <table class="table">
+        <div class="form-inline">
+            <h4>Thêm chi tiết phiếu nhập</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="panel panel-default">
+                <table class="table" id="ct">
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ctpn.MASACH, "MASACH", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("MASACH", null, htmlAttributes: new { @class = "form-control" ,@id = "item"})
+                                @Html.ValidationMessageFor(model => model.ctpn.MASACH, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            @Html.LabelFor(model => model.ctpn.SL, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ctpn.SL, new { htmlAttributes = new { @class = "form-control", @id = "amount" } })
+                                @Html.ValidationMessageFor(model => model.ctpn.SL, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="button" id="btnAdd" class="btn btn-default" value="Add" />
+                            </div>
+                        </td>
+                        </table>
+                </div>
+            </div>
+            <hr />
+            <table class="table" id="chitiet">
                 <tr>
-                    <td>
-                        @Html.EditorForMany(x => x.cTPNs, x => x.Index)
-                    </td>
-                    <td>
-                        <input type="button" value="Xoá" class="btn btn-default" id="del" />
-                    </td>
+                    <th>ID</th>
+                    <th>ID Sách</th>
+                    <th>Tên Sách</th>
+                    <th>Số lượng nhập</th>
+                    <th></th>
                 </tr>
+                @if (Model != null)
+            {
+                foreach (var ct in Model.pn.CTPNs)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => ct.MAPN)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.MASACH)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.SACH.TENSACH)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.SL)</td>
+                        <td><button class="btn btn-danger btnDelete">Delete</button></td>
+                        @Html.Hidden("ct.Index", i)
+                        @Html.Hidden("ct[" + i + "].idsach", ct.MASACH)
+                        @Html.Hidden("ct[" + i + "].soluong", ct.SL)
+                    </tr>
+                i=i+1;
+                }
+            }
             </table>
-        </div>
-        
-        <input type="button" value="Thêm" class="btn btn-default" id="add-ctpn" />
-        
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <hr />
+            <div class="form-group">
+                <div>
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
 }
 
 <div>
@@ -67,16 +113,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script>
-        jQuery(document).ready(function () {
-            $('#add-ctpn').click( function ()  {
-                jQuery.get('/PHIEUNHAPs/AddCTPN').done(function (cshtml) {
-                    jQuery('#ctpn-list').append(cshtml);
-                });
-            });
-            $('#del').click(function () {
-                $(this).closest('#ctpn-list').remove();
-            });
-        });
-</script>
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/mycustomjquery")
 }

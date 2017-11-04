@@ -42,9 +42,6 @@
         <th>
             Số lượng
         </th>
-        <th>
-            Giá
-        </th>
     </tr>
 
     @foreach (var item in Model.cTPNs)
@@ -55,9 +52,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DONGIA)
             </td>
         </tr>
     }

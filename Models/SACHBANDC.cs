@@ -15,11 +15,14 @@ namespace QLsach.Models
     public partial class SACHBANDC
     {
         public int ID { get; set; }
+        public int MAPX { get; set; }
         public int MASACH { get; set; }
+        public int MADL { get; set; }
         public int SL { get; set; }
         public int BANDC { get; set; }
     
-        public virtual CONGNO CONGNO { get; set; }
+        public virtual DAILY DAILY { get; set; }
+        public virtual PHIEUXUAT PHIEUXUAT { get; set; }
         public virtual SACH SACH { get; set; }
     }
 }

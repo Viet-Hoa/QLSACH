@@ -17,7 +17,7 @@ namespace QLsach.Models
         public System.DateTime NGAY { get; set; }
         public int MASACH { get; set; }
         public int SL { get; set; }
-    
+        public string Index { get; set; }
         public virtual SACH SACH { get; set; }
     }
 }
