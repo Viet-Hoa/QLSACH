@@ -1,7 +1,167 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    int t = 0, c = 0, nodl=0,noxb=0;
+    List<QLsach.Models.PHIEUTHU> dsthu = ViewBag.thu;
+    List<QLsach.Models.PHIEUCHI> dschi = ViewBag.chi;
+    List<QLsach.Models.CONGNO> dsnodl = ViewBag.nodl;
+    List<QLsach.Models.PHIEUNHAP> dsnoxb = ViewBag.noxb;
+ 
+    }
+
+<h2>Thống kê</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<table class="table">
+    <tr>
+        <td>
+            @Html.Label("Từ ngày", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("tu", new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessage("tu", new { @class = "text-danger" })
+            </div>
+        </td>
+        <td>
+            @Html.Label("Đến ngày", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("den", new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessage("den", new { @class = "text-danger" })
+            </div>
+        </td>
+        <td><input type="submit" value="Thống kê" class="btn btn-default" /></td>
+    </tr>
+</table>
 }
+<br />
+<h2>Thu</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Ngày")
+        </th>
+        <th>
+            @Html.DisplayName("Đại lý")
+        </th>
+        <th>
+            @Html.DisplayName("Số tiền")
+        </th>
+    </tr>
+    
+        @foreach (var item in dsthu)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DAILY.TENDL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIEN)
+                </td>
+            </tr>
+            t = t + item.TIEN;
+        }
 
-<h2>View</h2>
+</table>
+<h3>Tổng thu: @t</h3>
+<br />
+<h2>Chi</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Ngày")
+        </th>
+        <th>
+            @Html.DisplayName("NXB")
+        </th>
+        <th>
+            @Html.DisplayName("Số tiền")
+        </th>
+    </tr>
 
+    @foreach (var item in dschi)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NXB.TENNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIEN)
+            </td>
+        </tr>
+        c = c + item.TIEN;
+    }
+
+</table>
+<h3>Tổng chi: @c</h3>
+<br />
+<h2>Nợ đại lý</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Ngày")
+        </th>
+        <th>
+            @Html.DisplayName("Đại lý")
+        </th>
+        <th>
+            @Html.DisplayName("Số tiền")
+        </th>
+    </tr>
+
+    @foreach (var item in dsnodl)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHIEUXUAT.NGAY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DAILY.TENDL)
+            </td>
+            <td>                
+                @Html.DisplayFor(modelItem => item.TIENNO)
+            </td>
+        </tr>
+        nodl = nodl + item.TIENNO;
+    }
+
+</table>
+<h3>Tổng nợ: @nodl</h3>
+<br />
+<h2>Nợ NXB</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Ngày")
+        </th>
+        <th>
+            @Html.DisplayName("NXB")
+        </th>
+        <th>
+            @Html.DisplayName("Số tiền")
+        </th>
+    </tr>
+
+    @foreach (var item in dsnoxb)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NXB.TENNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGUOIGIAO)
+            </td>
+        </tr>
+        noxb = noxb + int.Parse(item.NGUOIGIAO);
+    }
+
+</table>
+<h3>Tổng nợ: @noxb</h3>

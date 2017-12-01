@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <div>
     <h4>PHIEUXUAT</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.pHIEUXUAT.NGAY)
+            @Html.DisplayName("Ngày")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.pHIEUXUAT.DAILY.TENDL)
+            @Html.DisplayName("Đại lý")
         </dt>
 
         <dd>
@@ -51,5 +51,5 @@
     </table>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Về", "Index")
 </p>

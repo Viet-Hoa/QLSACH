@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tồn kho</h2>
 
 @Html.ActionLink("Tạo mới", "Create")
 <table class="table">
@@ -21,7 +21,7 @@
             @Html.DisplayFor(modelItem => item)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.ToString("dd-MM-yyyy") })
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.ToString("dd-MM-yyyy") })
         </td>
     </tr>
 }

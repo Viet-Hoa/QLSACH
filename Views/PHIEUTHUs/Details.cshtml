@@ -4,22 +4,28 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <div>
-    <h4>PHIEUTHU</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NGAY)
+            @Html.DisplayName("Ngày")
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.NGAY)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.TIEN)
+            @Html.DisplayName("Đại lý")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAILY.TENDL)
+        </dd>
+        <dt>
+            @Html.DisplayName("Số tiền")
         </dt>
 
         <dd>
@@ -27,23 +33,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NOIDUNG)
+            @Html.DisplayName("Nội dung")
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.NOIDUNG)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DAILY.TENDL)
-        </dd>
+        
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Về", "Index")
 </p>

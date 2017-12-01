@@ -4,24 +4,24 @@
     ViewBag.Title = "List";
 }
 
-<h2>Index</h2>
+<h2>Danh sách sách bán được</h2>
 <table class="table">
     <tr>
         
         <th>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+            @Html.DisplayName("Đại lý")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PHIEUXUAT.MAPX)
+            @Html.DisplayName("Ngày xuất")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SACH.TENSACH)
+            @Html.DisplayName("Sách")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SL)
+            @Html.DisplayName("Số lượng")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BANDC)
+            @Html.DisplayName("Số lượng bán được")
         </th>
         <th></th>
     </tr>
@@ -33,7 +33,7 @@
             @Html.DisplayFor(modelItem => item.DAILY.TENDL)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PHIEUXUAT.MAPX)
+            @Html.DisplayFor(modelItem => item.PHIEUXUAT.NGAY)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SACH.TENSACH)
@@ -45,7 +45,7 @@
             @Html.DisplayFor(modelItem => item.BANDC)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID })
+            @Html.ActionLink("Sửa", "Edit", new { id=item.ID })
         </td>
     </tr>
 }

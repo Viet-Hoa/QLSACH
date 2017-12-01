@@ -4,30 +4,34 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Phiếu thu</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NGAY)
+            @Html.DisplayName("Đại lý")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TIEN)
+            @Html.DisplayName("Ngày")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NOIDUNG)
+            @Html.DisplayName("Số tiền")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+            @Html.DisplayName("Nội dung")
         </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DAILY.TENDL)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.NGAY)
         </td>
@@ -37,13 +41,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.NOIDUNG)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DAILY.TENDL)
-        </td>
+        
         <td>
             
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.ID }) 
+            
         </td>
     </tr>
 }

@@ -4,30 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <div>
-    <h4>CONGNO</h4>
+    <h4>Công nợ</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TIENNO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TIENNO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TIENTRA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TIENTRA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+            @Html.DisplayName("Đại lý")
         </dt>
 
         <dd>
@@ -35,16 +19,33 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PHIEUXUAT.MAPX)
+            @Html.DisplayName("Ngày xuất hàng")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PHIEUXUAT.MAPX)
+            @Html.DisplayFor(model => model.PHIEUXUAT.NGAY)
         </dd>
+        <dt>
+            @Html.DisplayName("Tiền nợ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIENNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Tiền trả")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIENTRA)
+        </dd>
+
+        
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MADL + "-" + Model.MAPX }) |
+    @Html.ActionLink("Về", "Index")
 </p>

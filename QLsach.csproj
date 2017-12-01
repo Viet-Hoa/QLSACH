@@ -363,7 +363,6 @@
     <Content Include="Views\PHIEUNHAPs\Create.cshtml" />
     <Content Include="Views\PHIEUNHAPs\Index.cshtml" />
     <Content Include="Views\PHIEUNHAPs\Details.cshtml" />
-    <Content Include="Views\SACHBANDCs\Details.cshtml" />
     <Content Include="Views\SACHBANDCs\Edit.cshtml" />
     <Content Include="Views\SACHBANDCs\Index.cshtml" />
     <Content Include="Views\DAILies\Create.cshtml" />
@@ -382,11 +381,9 @@
     <Content Include="Views\CONGNOes\Index.cshtml" />
     <Content Include="Views\TONKHOes\Create.cshtml" />
     <Content Include="Views\PHIEUCHIs\Create.cshtml" />
-    <Content Include="Views\PHIEUCHIs\Delete.cshtml" />
     <Content Include="Views\PHIEUCHIs\Details.cshtml" />
     <Content Include="Views\PHIEUCHIs\Index.cshtml" />
     <Content Include="Views\PHIEUTHUs\Create.cshtml" />
-    <Content Include="Views\PHIEUTHUs\Delete.cshtml" />
     <Content Include="Views\PHIEUTHUs\Details.cshtml" />
     <Content Include="Views\PHIEUTHUs\Index.cshtml" />
     <Content Include="Views\Thongke\Index.cshtml" />

@@ -22,13 +22,15 @@ namespace QLsach.Controllers
         }
 
         // GET: CONGNOes/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(String id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONGNO cONGNO = db.CONGNOes.Find(id);
+            int dl = int.Parse(id.Substring(0, id.IndexOf("-")));
+            int px = int.Parse(id.Substring(id.IndexOf("-")+1));
+            CONGNO cONGNO = db.CONGNOes.Where(s=>s.MADL==dl &&s.MAPX==px).FirstOrDefault();
             if (cONGNO == null)
             {
                 return HttpNotFound();
@@ -64,13 +66,15 @@ namespace QLsach.Controllers
         }
 
         // GET: CONGNOes/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(String id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONGNO cONGNO = db.CONGNOes.Find(id);
+            int dl = int.Parse(id.Substring(0, id.IndexOf("-")));
+            int px = int.Parse(id.Substring(id.IndexOf("-") + 1));
+            CONGNO cONGNO = db.CONGNOes.Where(s => s.MADL == dl && s.MAPX == px).FirstOrDefault();
             if (cONGNO == null)
             {
                 return HttpNotFound();

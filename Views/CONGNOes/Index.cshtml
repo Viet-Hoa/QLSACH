@@ -4,30 +4,37 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Công nợ</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TIENNO)
+            @Html.DisplayName("Đại lý")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TIENTRA)
+            @Html.DisplayName("Ngày xuất hàng")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+            @Html.DisplayName("Tiền nợ")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PHIEUXUAT.MAPX)
+            @Html.DisplayName("Tiền trả")
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.DAILY.TENDL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHIEUXUAT.NGAY)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.TIENNO)
         </td>
@@ -35,15 +42,8 @@
             @Html.DisplayFor(modelItem => item.TIENTRA)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DAILY.TENDL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PHIEUXUAT.MAPX)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Sửa", "Edit", new {  id=item.MADL+"-"+item.MAPX  })|
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.MADL + "-" + item.MAPX })
         </td>
     </tr>
 }

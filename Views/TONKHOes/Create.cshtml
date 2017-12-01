@@ -5,7 +5,7 @@
     int i = 0;
 }
 
-<h2>Create</h2>
+<h2>Tạo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>TONKHO</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -23,14 +23,14 @@
         <table class="table">
             <tr>
                 <td>
-                    @Html.LabelFor(modelitem => item.MASACH, "Sách", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("Sách", "Sách", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DisplayFor(modelItem => item.SACH.TENSACH, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.Hidden("item[" + i + "].MASACH", item.MASACH)
                     </div>
                 </td>
                 <td>
-                    @Html.LabelFor(modelitem => item.SL, "Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("Số lượng", "Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(modelitem => item.SL, new { htmlAttributes = new { @class = "form-control", @value = item.SL, @id="throw" } })
                         @Html.ValidationMessageFor(modelitem => item.SL, "", new { @class = "text-danger" })     
@@ -44,14 +44,14 @@
 }
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Tạo" class="btn btn-default" />
                 </div>
             </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Về", "Index")
 </div>
 
 @section Scripts {

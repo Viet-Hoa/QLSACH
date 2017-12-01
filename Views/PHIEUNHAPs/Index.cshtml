@@ -4,21 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Nhập sách</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NGAY)
+            @Html.DisplayName("Ngày")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NGUOIGIAO)
+            @Html.DisplayName("Người giao")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NXB.TENNXB)
+            @Html.DisplayName("NXB")
         </th>
         <th></th>
     </tr>
@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.NXB.TENNXB)
         </td>
         <td>            
-            @Html.ActionLink("Details", "Details", new { id = item.MAPN })
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.MAPN })
         </td>
     </tr>
 }

@@ -5,17 +5,17 @@
     var a= ViewBag.mess;
 }
 
-<h2>login</h2>
+<h2>Đại lý đăng nhập</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>DAILY</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.TENDL, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Đại lý", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TENDL, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TENDL, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DIENTHOAI, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Điện thoại", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DIENTHOAI, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DIENTHOAI, "", new { @class = "text-danger" })
@@ -33,7 +33,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <p class="alert-danger">@a</p>
-                <input type="submit" value="Login" class="btn btn-default" />
+                <input type="submit" value="Đăng nhập" class="btn btn-default" />
             </div>
         </div>
     </div>

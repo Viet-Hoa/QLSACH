@@ -4,24 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Đại lý</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TENDL)
+            @Html.DisplayName("Tên đại lý")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DIACHI)
+            @Html.DisplayName("Địa chỉ")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DIENTHOAI)
+            @Html.DisplayName("Điện thoại")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TONGNO)
+            @Html.DisplayName("Tổng nợ")
         </th>
         <th></th>
     </tr>
@@ -41,8 +41,8 @@
             @Html.DisplayFor(modelItem => item.TONGNO)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MADL }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MADL })
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MADL }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MADL })
         </td>
     </tr>
 }
