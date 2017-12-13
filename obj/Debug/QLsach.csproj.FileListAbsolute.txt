@@ -105,6 +105,5 @@ D:\GitHub\Qlsach\QLSACH\bin\Microsoft.Owin.Security.OAuth.xml
 D:\GitHub\Qlsach\QLSACH\bin\Microsoft.Owin.Security.Google.xml
 D:\GitHub\Qlsach\QLSACH\bin\Microsoft.Owin.Security.Twitter.xml
 D:\GitHub\Qlsach\QLSACH\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\GitHub\Qlsach\QLSACH\obj\Debug\QLsach.csprojResolveAssemblyReference.cache
 D:\GitHub\Qlsach\QLSACH\obj\Debug\QLsach.dll
 D:\GitHub\Qlsach\QLSACH\obj\Debug\QLsach.pdb
